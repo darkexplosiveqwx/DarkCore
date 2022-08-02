@@ -14,9 +14,14 @@
   "block.darkcore.ruby_block": "Rubin Block",
   "block.darkcore.citrin_block": "Citrin Block",
   "block.darkcore.saphir_block": "Saphir Block",
+  "block.darkcore.jumpy_block": "Jumpy Block",
+  "block.darkcore.zircon_lamp": "Zircon Lampe",
 
 
   "itemGroup.darkcore_dark_tab": "DarkCore-Dunkle Gegenstände",
   "itemGroup.darkcore_misc": "DarkCore-Miceleaneus",
-  "itemGroup.darkcore_extra_stuff": "DarkCore-Zusätzliche Items"
+  "itemGroup.darkcore_extra_stuff": "DarkCore-Zusätzliche Items",
+
+  "text.darkcore.pressshift": "Press SHIFT for more information",
+  "text.darkcore.diceiteminfo": "Right Click to get Random Number"
 }

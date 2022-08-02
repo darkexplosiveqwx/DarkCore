@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=true": { "model": "darkcore:block/zircon_lamp_on" },
+    "lit=false": { "model": "darkcore:block/zircon_lamp_off" }
+  }
+}

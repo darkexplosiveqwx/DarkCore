@@ -2,6 +2,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.block;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.JumpyBlock;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.ZirconLampBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModCreativeModeTab;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -10,6 +11,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -55,6 +57,10 @@ public class ModBlocks {
             () -> new JumpyBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(10f).requiresCorrectToolForDrops()), ModCreativeModeTab.DARKCORE_MISC);
 
+ public static final RegistryObject<Block> ZIRCON_LAMP = registerBlock("zircon_lamp",
+            () -> new ZirconLampBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(10f).requiresCorrectToolForDrops().lightLevel(state -> state.getValue(ZirconLampBlock.LIT) ? 15 : 0)), ModCreativeModeTab.DARKCORE_MISC);
+
 
 
 
@@ -62,7 +68,7 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> DARK_AIR = registerBlockWithoutItem("dark_air",
-            () -> new Block(BlockBehaviour.Properties.of(Material.AIR)));
+            () -> new Block(BlockBehaviour.Properties.of(Material.AIR).air().noCollission().noOcclusion().noLootTable().jumpFactor(0f)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block){

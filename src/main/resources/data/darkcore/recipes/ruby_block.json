@@ -1,0 +1,16 @@
+{
+  "type" : "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key" : {
+    "#" : {
+      "item": "darkcore:ruby"
+    }
+  },
+  "result" : {
+    "item": "darkcore:ruby_block"
+  }
+}

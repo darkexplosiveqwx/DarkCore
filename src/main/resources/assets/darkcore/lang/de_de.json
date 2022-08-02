@@ -1,0 +1,22 @@
+{
+  "item.darkcore.dark_ingot": "Darkium",
+  "item.darkcore.raw_dark_ingot": "Rohes Darkium",
+  "item.darkcore.dark_gem": "Dunkler Edelstein",
+  "item.darkcore.ruby": "Rubin",
+  "item.darkcore.citrin": "Citrin",
+  "item.darkcore.saphir": "Saphir",
+  "item.darkcore.dice": "Würfel",
+
+
+  "block.darkcore.dark_block": "Darkium Block",
+  "block.darkcore.dark_ore": "Darkium Erz",
+  "block.darkcore.deepslate_dark_ore": " Tiefenschiefer Darkium Erz",
+  "block.darkcore.ruby_block": "Rubin Block",
+  "block.darkcore.citrin_block": "Citrin Block",
+  "block.darkcore.saphir_block": "Saphir Block",
+
+
+  "itemGroup.darkcore_dark_tab": "DarkCore-Dunkle Gegenstände",
+  "itemGroup.darkcore_misc": "DarkCore-Miceleaneus",
+  "itemGroup.darkcore_extra_stuff": "DarkCore-Zusätzliche Items"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 1,
+  "group": "dark_ingot",
+  "ingredient": {
+    "tag": "darkcore:dark_ores"
+  },
+  "result": "darkcore:dark_ingot"
+}

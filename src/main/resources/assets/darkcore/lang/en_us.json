@@ -1,0 +1,26 @@
+{
+  "item.darkcore.dark_ingot" : "Darkium",
+  "item.darkcore.raw_dark_ingot" : "Raw Darkium",
+  "item.darkcore.dark_gem" : "Dark Gem",
+  "item.darkcore.ruby" : "Ruby",
+  "item.darkcore.citrin" : "Citrin",
+  "item.darkcore.saphir" : "Saphir",
+  "item.darkcore.dice" : "Dice",
+
+
+  "block.darkcore.dark_block": "Block of Darkium",
+  "block.darkcore.dark_ore": "Darkium Ore",
+  "block.darkcore.deepslate_dark_ore": "Deepslate Darkium Ore",
+  "block.darkcore.ruby_block": "Ruby Block",
+  "block.darkcore.citrin_block": "Citrin Block",
+  "block.darkcore.saphir_block": "Saphir Block",
+  "block.darkcore.jumpy_block": "Jumpy Block",
+
+
+  "itemGroup.darkcore_dark_tab" : "DarkCore-Dark Items",
+  "itemGroup.darkcore_misc" : "DarkCore-Miceleaneus",
+  "itemGroup.darkcore_extra_stuff" : "DarkCore-Extra Stuff",
+
+  "text.darkcore.pressshift" : "Press SHIFT for more information",
+  "text.darkcore.diceiteminfo" : "Right Click to get Random Number"
+}

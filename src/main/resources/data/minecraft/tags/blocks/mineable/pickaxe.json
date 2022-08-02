@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "darkcore:dark_block",
+    "darkcore:dark_ore",
+    "darkcore:deepslate_dark_ore",
+    "darkcore:ruby_block",
+    "darkcore:citrin_block",
+    "darkcore:saphir_block",
+    "darkcore:jumpy_block"
+
+  ]
+}

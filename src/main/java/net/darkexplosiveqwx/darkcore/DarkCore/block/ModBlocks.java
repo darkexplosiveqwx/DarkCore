@@ -1,7 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
-import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.BlueBerryCropBlock;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.BlueberryCropBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.JumpyBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.ZirconLampBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModCreativeModeTab;
@@ -63,7 +63,7 @@ public class ModBlocks {
                     .strength(10f).requiresCorrectToolForDrops().lightLevel(state -> state.getValue(ZirconLampBlock.LIT) ? 15 : 0)), ModCreativeModeTab.DARKCORE_MISC);
 
     public static final RegistryObject<Block> BLUEBERRY_CROP = BLOCKS.register("blueberry_crop",
-            () -> new BlueBerryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+            () -> new BlueberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
 
 

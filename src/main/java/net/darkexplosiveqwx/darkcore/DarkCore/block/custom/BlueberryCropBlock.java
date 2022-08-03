@@ -7,10 +7,10 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
 
-public class BlueBerryCropBlock extends CropBlock {
+public class BlueberryCropBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
 
-    public BlueBerryCropBlock(Properties properties) {
+    public BlueberryCropBlock(Properties properties) {
         super(properties);
     }
 

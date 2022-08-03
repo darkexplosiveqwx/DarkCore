@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "all": "darkcore:block/blueberry_stage0"
+  }
+}

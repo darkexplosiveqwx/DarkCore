@@ -6,7 +6,8 @@
   "item.darkcore.citrin": "Citrin",
   "item.darkcore.saphir": "Saphir",
   "item.darkcore.dice": "Würfel",
-
+  "item.darkcore.blueberry_seeds": "Blaubeeren Samen",
+  "item.darkcore.blueberry": "Blaubeere",
 
   "block.darkcore.dark_block": "Darkium Block",
   "block.darkcore.dark_ore": "Darkium Erz",
@@ -16,6 +17,8 @@
   "block.darkcore.saphir_block": "Saphir Block",
   "block.darkcore.jumpy_block": "Jumpy Block",
   "block.darkcore.zircon_lamp": "Zircon Lampe",
+  "block.darkcore.dark_air": "Dunkle Luft",
+  "block.darkcore.blueberry_crop": "Blaubeeren Pflanze",
 
 
   "itemGroup.darkcore_dark_tab": "DarkCore-Dunkle Gegenstände",

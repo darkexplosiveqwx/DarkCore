@@ -7,7 +7,8 @@
     "darkcore:ruby_block",
     "darkcore:citrin_block",
     "darkcore:saphir_block",
-    "darkcore:jumpy_block"
+    "darkcore:jumpy_block",
+    "darkcore:zircon_lamp"
 
   ]
 }

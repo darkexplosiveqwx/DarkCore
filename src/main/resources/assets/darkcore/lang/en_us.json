@@ -8,6 +8,7 @@
   "item.darkcore.dice" : "Dice",
   "item.darkcore.blueberry_seeds" : "Blueberry Seeds",
   "item.darkcore.blueberry" : "Blueberry",
+  "item.darkcore.eight_ball" : "Eight Ball",
 
   "block.darkcore.dark_block": "Block of Darkium",
   "block.darkcore.dark_ore": "Darkium Ore",
@@ -26,5 +27,8 @@
   "itemGroup.darkcore_extra_stuff" : "DarkCore-Extra Stuff",
 
   "text.darkcore.pressshift" : "Press SHIFT for more information",
-  "text.darkcore.diceiteminfo" : "Right Click to get Random Number"
+  "text.darkcore.diceiteminfo" : "Right Click to get Random Number",
+
+
+  "entity.minecraft.villager.darkcore.jumpy_master": "Jumpy Master"
 }

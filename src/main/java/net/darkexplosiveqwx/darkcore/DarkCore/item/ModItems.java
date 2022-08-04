@@ -3,6 +3,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.item;
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.DiceItem;
+import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.EightBallItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -25,6 +26,7 @@ public class ModItems {
 
 
     public  static final RegistryObject<Item> DICE = ITEMS.register("dice", ()-> new DiceItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DARKCORE_MISC)));
+    public  static final RegistryObject<Item> EIGHT_BALL = ITEMS.register("eight_ball", ()-> new EightBallItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DARKCORE_MISC)));
     public  static final RegistryObject<Item> BLUEBERRY_SEEDS = ITEMS.register("blueberry_seeds", ()-> new ItemNameBlockItem(ModBlocks.BLUEBERRY_CROP.get(), new Item.Properties().tab(ModCreativeModeTab.DARKCORE_MISC)));
     public  static final RegistryObject<Item> BLUEBERRY = ITEMS.register("blueberry", ()-> new Item(new Item.Properties().tab(ModCreativeModeTab.DARKCORE_MISC).food(new FoodProperties.Builder().nutrition(2).saturationMod(2f).build())));
 

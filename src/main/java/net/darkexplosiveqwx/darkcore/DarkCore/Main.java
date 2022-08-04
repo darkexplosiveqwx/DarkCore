@@ -3,6 +3,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore;
 import com.mojang.logging.LogUtils;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
+import net.darkexplosiveqwx.darkcore.DarkCore.villager.ModVillagers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,6 +25,7 @@ public class Main {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModVillagers.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -31,7 +33,9 @@ public class Main {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event){
-
+        event.enqueueWork(() -> {
+            ModVillagers.registerPOIs();
+        });
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)

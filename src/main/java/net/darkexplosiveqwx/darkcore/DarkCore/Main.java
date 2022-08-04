@@ -3,6 +3,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore;
 import com.mojang.logging.LogUtils;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
+import net.darkexplosiveqwx.darkcore.DarkCore.painting.ModPaintings;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.ModVillagers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -26,6 +27,7 @@ public class Main {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModVillagers.register(modEventBus);
+        ModPaintings.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

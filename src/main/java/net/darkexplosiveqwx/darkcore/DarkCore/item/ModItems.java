@@ -2,16 +2,11 @@ package net.darkexplosiveqwx.darkcore.DarkCore.item;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
-import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.DiceItem;
-import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.EightBallItem;
+import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.*;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.Rarity;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.item.*;
+import net.minecraftforge.eventbus.api.*;
+import net.minecraftforge.registries.*;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);

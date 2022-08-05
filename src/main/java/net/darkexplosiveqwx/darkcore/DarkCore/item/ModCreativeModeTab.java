@@ -1,7 +1,6 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.item;
 
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 
 public class ModCreativeModeTab {
     public static final CreativeModeTab DARKCORE_DARK_TAB = new CreativeModeTab("darkcore_dark_tab") {

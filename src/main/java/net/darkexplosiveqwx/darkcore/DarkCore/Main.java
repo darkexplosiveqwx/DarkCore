@@ -1,20 +1,17 @@
 package net.darkexplosiveqwx.darkcore.DarkCore;
 
-import com.mojang.logging.LogUtils;
+import com.mojang.logging.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
-import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
-import net.darkexplosiveqwx.darkcore.DarkCore.painting.ModPaintings;
+import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.ModVillagers;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
+import net.minecraftforge.fml.event.lifecycle.*;
+import net.minecraftforge.fml.javafmlmod.*;
+import org.slf4j.*;
 
 @Mod(Main.MOD_ID)
 public class Main {

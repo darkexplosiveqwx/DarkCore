@@ -86,6 +86,10 @@ public class ModBlocks {
                     .strength(6f).requiresCorrectToolForDrops(),
                     UniformInt.of(3, 7)), ModCreativeModeTab.DARKCORE_ZIRCON);
 
+    public static final RegistryObject<Block> ZIRCON_BLOCK = registerBlock("zircon_block",
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(10f).requiresCorrectToolForDrops()), ModCreativeModeTab.DARKCORE_ZIRCON);
+
 
 
 

@@ -37,6 +37,17 @@ public class ModEvents {
                     new ItemStack(Items.EMERALD, 5),
                     stack,10,8,0.02F));
         }
+
+        if(event.getType() == VillagerProfession.TOOLSMITH) {
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            ItemStack stack = new ItemStack(ModItems.DICE.get(), 1);
+            int villagerLevel = 1;
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 2),
+                    stack,10,8,0.02F));
+        }
+
         if(event.getType() == ModVillagers.JUMPY_MASTER.get()) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             ItemStack stack = new ItemStack(ModBlocks.JUMPY_BLOCK.get(), 15);
@@ -48,5 +59,6 @@ public class ModEvents {
         }
     }
 
-
 }
+
+

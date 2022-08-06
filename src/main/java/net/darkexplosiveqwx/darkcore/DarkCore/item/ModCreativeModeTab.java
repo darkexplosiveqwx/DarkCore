@@ -22,4 +22,10 @@ public class ModCreativeModeTab {
             return new ItemStack(ModItems.DICE.get());
         }
     };
+    public static final CreativeModeTab DARKCORE_ZIRCON = new CreativeModeTab("darkcore_zircon") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ModItems.ZIRCON.get());
+        }
+    };
 }

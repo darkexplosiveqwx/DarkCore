@@ -26,6 +26,9 @@ public class ModItems {
     public  static final RegistryObject<Item> BLUEBERRY = ITEMS.register("blueberry", ()-> new Item(new Item.Properties().tab(ModCreativeModeTab.DARKCORE_MISC).food(new FoodProperties.Builder().nutrition(2).saturationMod(2f).build())));
 
 
+    public  static final RegistryObject<Item> ZIRCON = ITEMS.register("zircon", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_ZIRCON)));
+
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

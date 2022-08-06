@@ -9,6 +9,7 @@
   "item.darkcore.blueberry_seeds" : "Blueberry Seeds",
   "item.darkcore.blueberry" : "Blueberry",
   "item.darkcore.eight_ball" : "Eight Ball",
+  "item.darkcore.zircon" : "Zircon",
 
   "block.darkcore.dark_block": "Block of Darkium",
   "block.darkcore.dark_ore": "Darkium Ore",
@@ -22,9 +23,17 @@
   "block.darkcore.blueberry_crop": "Blueberry Crop",
 
 
+
+  "block.darkcore.zircon_ore": "Zircon Ore",
+  "block.darkcore.deepslate_zircon_ore": "Deepslate Zircon Ore",
+  "block.darkcore.endstone_zircon_ore": "Endstone Zircon Ore",
+  "block.darkcore.netherrack_zircon_ore": "Netherrack Zircon Ore",
+
+
   "itemGroup.darkcore_dark_tab" : "DarkCore-Dark Items",
   "itemGroup.darkcore_misc" : "DarkCore-Miceleaneus",
   "itemGroup.darkcore_extra_stuff" : "DarkCore-Extra Stuff",
+  "itemGroup.darkcore_zircon" : "DarkCore-Zircon",
 
   "text.darkcore.pressshift" : "Press SHIFT for more information",
   "text.darkcore.diceiteminfo" : "Right Click to get Random Number",

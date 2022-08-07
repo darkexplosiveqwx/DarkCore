@@ -46,7 +46,6 @@ public class Main {
     public  static class  ClientModEvents{
         @SubscribeEvent
         public static void  onClientSetup(FMLClientSetupEvent event){
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUEBERRY_CROP.get(), RenderType.cutout());
         }
     }
 

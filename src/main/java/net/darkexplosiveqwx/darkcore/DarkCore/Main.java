@@ -24,9 +24,12 @@ public class Main {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
         ModVillagers.register(modEventBus);
         ModPaintings.register(modEventBus);
+
         ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

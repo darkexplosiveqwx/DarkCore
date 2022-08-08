@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1,
+  "group": "zircon",
+  "ingredient": {
+    "tag": "darkcore:zircon_ores"
+  },
+  "result": "darkcore:zircon"
+}

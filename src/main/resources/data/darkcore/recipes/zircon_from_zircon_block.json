@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "zircon",
+  "ingredients": [
+    {
+      "item": "darkcore:zircon_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "darkcore:zircon"
+  }
+}

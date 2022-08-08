@@ -6,7 +6,6 @@ import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.world.feature.*;
-import net.minecraft.client.renderer.*;
 import net.minecraftforge.common.*;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.*;

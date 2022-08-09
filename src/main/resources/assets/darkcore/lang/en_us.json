@@ -41,5 +41,14 @@
   "text.darkcore.diceiteminfo" : "Right Click to get Random Number",
 
 
-  "entity.minecraft.villager.darkcore.jumpy_master": "Jumpy Master"
+  "entity.minecraft.villager.darkcore.jumpy_master": "Jumpy Master",
+
+  "key.category.darkcore.main"  : "DarkCore-Main",
+  "key.category.darkcore.util"  : "DarkCore-Utilities",
+
+
+  "key.darkcore.drink_water": "Drink Water",
+
+  "message.darkcore.drink_water": "Drinking Water!",
+  "message.darkcore.no_water": "No water nearby!"
 }

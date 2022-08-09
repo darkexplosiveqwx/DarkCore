@@ -3,6 +3,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore;
 import com.mojang.logging.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.world.feature.*;
@@ -11,6 +12,7 @@ import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.*;
+import org.jetbrains.annotations.*;
 import org.slf4j.*;
 
 @Mod(Main.MOD_ID)
@@ -35,10 +37,13 @@ public class Main {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event){
+    private void commonSetup(final @NotNull FMLCommonSetupEvent event){
         event.enqueueWork(() -> {
             ModVillagers.registerPOIs();
+            ModMessages.register();
         });
+
+        ModMessages.register();
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)

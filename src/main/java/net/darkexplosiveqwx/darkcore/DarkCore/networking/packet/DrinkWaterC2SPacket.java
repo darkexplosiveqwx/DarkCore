@@ -1,5 +1,6 @@
  package net.darkexplosiveqwx.darkcore.DarkCore.networking.packet;
 
+import net.darkexplosiveqwx.darkcore.DarkCore.thirst.*;
 import net.minecraft.*;
 import net.minecraft.network.*;
 import net.minecraft.network.chat.*;
@@ -41,6 +42,11 @@ public class DrinkWaterC2SPacket {
                         0.5F, level.random.nextFloat() * 0.1F + 0.9F);
 
                 // increase the water level / thirst level of player
+                player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
+                    thirst.addThirst(1);
+                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst())
+                            .withStyle(ChatFormatting.AQUA));
+                });
 
                 // Output the current thirst level
 
@@ -48,6 +54,10 @@ public class DrinkWaterC2SPacket {
                 // Notify the player that there is no water around!
                 player.sendSystemMessage(Component.translatable(MESSAGE_NO_WATER).withStyle(ChatFormatting.RED));
                 // Output the current thirst level
+                player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
+                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst())
+                            .withStyle(ChatFormatting.AQUA));
+                });
             }
 
 

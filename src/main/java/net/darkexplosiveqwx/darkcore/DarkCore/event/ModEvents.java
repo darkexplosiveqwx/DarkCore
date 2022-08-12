@@ -4,10 +4,13 @@ import it.unimi.dsi.fastutil.ints.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.ModMessages;
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.ThirstDataSyncS2CPacket;
 import net.darkexplosiveqwx.darkcore.DarkCore.thirst.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.npc.*;
 import net.minecraft.world.entity.player.*;
@@ -15,6 +18,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.trading.*;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.event.*;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.village.*;
 import net.minecraftforge.eventbus.api.*;
@@ -117,10 +121,22 @@ public class ModEvents {
             event.player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
                 if(thirst.getThirst() > 0 && event.player.getRandom().nextFloat() < 0.005f) { // Once Every 10 Seconds on Avg
                     thirst.subThirst(1);
-                    event.player.sendSystemMessage(Component.literal("Subtracted Thirst"));
+                    ModMessages.sendToPlayer(new ThirstDataSyncS2CPacket(thirst.getThirst()), (ServerPlayer) event.player);
                 }
             });
         }
+    }
+
+
+    @SubscribeEvent
+    public static void onPlayerJoinWorld(EntityJoinLevelEvent event) {
+        if(!event.getLevel().isClientSide) {
+            if(event.getEntity() instanceof ServerPlayer player){
+                player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
+                    ModMessages.sendToPlayer(new ThirstDataSyncS2CPacket(thirst.getThirst()), player);
+                });
+            }
+    }
     }
 
 }

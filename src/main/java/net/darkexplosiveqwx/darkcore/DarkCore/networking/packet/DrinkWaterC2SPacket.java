@@ -1,5 +1,6 @@
  package net.darkexplosiveqwx.darkcore.DarkCore.networking.packet;
 
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.ModMessages;
 import net.darkexplosiveqwx.darkcore.DarkCore.thirst.*;
 import net.minecraft.*;
 import net.minecraft.network.*;
@@ -44,8 +45,9 @@ public class DrinkWaterC2SPacket {
                 // increase the water level / thirst level of player
                 player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
                     thirst.addThirst(1);
-                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst())
-                            .withStyle(ChatFormatting.AQUA));
+                    /*player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst())
+                            .withStyle(ChatFormatting.AQUA));*/
+                    ModMessages.sendToPlayer(new ThirstDataSyncS2CPacket(thirst.getThirst()), player);
                 });
 
                 // Output the current thirst level
@@ -55,8 +57,10 @@ public class DrinkWaterC2SPacket {
                 player.sendSystemMessage(Component.translatable(MESSAGE_NO_WATER).withStyle(ChatFormatting.RED));
                 // Output the current thirst level
                 player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
-                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst())
-                            .withStyle(ChatFormatting.AQUA));
+                    /*player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst())
+                            .withStyle(ChatFormatting.AQUA));*/
+                    ModMessages.sendToPlayer(new ThirstDataSyncS2CPacket(thirst.getThirst()), player);
+
                 });
             }
 

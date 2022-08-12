@@ -1,6 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.event;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.client.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.util.*;
@@ -27,6 +28,10 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event){
             event.register(KeyBinding.DRINKING_KEY);
+        }
+        @SubscribeEvent
+        public static void registerGUIOverlays(RegisterGuiOverlaysEvent event){
+            event.registerAboveAll("thirst", ThirstHudOverlay.HUD_THIRST);
         }
     }
 

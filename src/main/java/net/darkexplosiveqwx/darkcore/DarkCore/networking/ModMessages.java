@@ -36,7 +36,12 @@ public class ModMessages {
             .encoder(DrinkWaterC2SPacket::toBytes)
             .consumerMainThread(DrinkWaterC2SPacket::handle)
             .add();
-    ;
+
+        net.messageBuilder(ThirstDataSyncS2CPacket.class,id(),NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ThirstDataSyncS2CPacket::new)
+                .encoder(ThirstDataSyncS2CPacket::toBytes)
+                .consumerMainThread(ThirstDataSyncS2CPacket::handle)
+                .add();
 
     }
 
@@ -44,7 +49,7 @@ public class ModMessages {
         INSTANCE.sendToServer(message);
     }
 
-    public static <MSG> void sendToPlayr(MSG message, ServerPlayer player){
+    public static <MSG> void sendToPlayer(MSG message, ServerPlayer player){
         INSTANCE.send(PacketDistributor.PLAYER.with(()-> player), message);
     }
 

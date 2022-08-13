@@ -2,11 +2,13 @@ package net.darkexplosiveqwx.darkcore.DarkCore;
 
 import com.mojang.logging.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.fluid.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.world.feature.*;
+import net.minecraft.client.renderer.*;
 import net.minecraftforge.common.*;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.*;
@@ -32,6 +34,9 @@ public class Main {
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
 
+        ModFluidsTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -50,6 +55,8 @@ public class Main {
     public  static class  ClientModEvents{
         @SubscribeEvent
         public static void  onClientSetup(FMLClientSetupEvent event){
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
         }
     }
 

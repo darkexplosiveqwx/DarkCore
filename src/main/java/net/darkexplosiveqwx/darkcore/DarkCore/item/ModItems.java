@@ -2,6 +2,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.item;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
+import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.*;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
@@ -28,6 +29,10 @@ public class ModItems {
 
     public  static final RegistryObject<Item> ZIRCON = ITEMS.register("zircon", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_ZIRCON)));
     public  static final RegistryObject<Item> RAW_ZIRCON = ITEMS.register("raw_zircon", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_ZIRCON)));
+
+
+    public  static final RegistryObject<Item> SOAP_WATER_BUCKET = ITEMS.register("soap_water_bucket", ()-> new BucketItem(ModFluids.SOURCE_SOAP_WATER,new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DARKCORE_MISC).craftRemainder(Items.BUCKET)));
+
 
 
     public static void register(IEventBus eventBus){

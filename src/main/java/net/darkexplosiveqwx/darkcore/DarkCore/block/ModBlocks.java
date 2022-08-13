@@ -4,6 +4,7 @@ import net.darkexplosiveqwx.darkcore.DarkCore.Main;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.BlueberryCropBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.JumpyBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.ZirconLampBlock;
+import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModCreativeModeTab;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -94,6 +96,7 @@ public class ModBlocks {
 
 
 
+    public static final RegistryObject<LiquidBlock> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block", () -> new LiquidBlock(ModFluids.SOURCE_SOAP_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
 
 

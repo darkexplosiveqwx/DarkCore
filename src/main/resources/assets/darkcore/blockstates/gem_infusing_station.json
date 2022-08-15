@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "darkcore:block/gem_infusing_station"
+    },
+    "facing=south": {
+      "model": "darkcore:block/gem_infusing_station",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "darkcore:block/gem_infusing_station",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "darkcore:block/gem_infusing_station",
+      "y": 90
+    }
+  }
+} 

@@ -2,6 +2,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.block;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.BlueberryCropBlock;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.GemInfusingStationBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.JumpyBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.ZirconLampBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
@@ -74,7 +75,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLUEBERRY_CROP = BLOCKS.register("blueberry_crop",
             () -> new BlueberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
-
+    public static final RegistryObject<Block> GEM_INFUSING_STATION =registerBlock("gem_infusing_station",
+            () -> new GemInfusingStationBlock(BlockBehaviour.Properties.of(Material.METAL).strength(6f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.DARKCORE_MISC);
 
 
 

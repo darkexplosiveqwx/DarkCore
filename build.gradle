@@ -11,6 +11,11 @@ plugins {
 
     //ae2 forge
     id "idea"
+
+    //parchment
+    id 'org.parchmentmc.compass' version '0.8.1'
+    id 'org.parchmentmc.writtenbooks' version '0.5.+'
+    id 'java-base'
 }
 
 

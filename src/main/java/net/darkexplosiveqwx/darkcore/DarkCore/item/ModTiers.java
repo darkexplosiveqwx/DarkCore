@@ -1,8 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.item;
 
 import net.minecraft.util.LazyLoadedValue;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 

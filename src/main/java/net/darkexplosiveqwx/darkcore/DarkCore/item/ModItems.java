@@ -33,6 +33,11 @@ public class ModItems {
 
     public  static final RegistryObject<Item> SOAP_WATER_BUCKET = ITEMS.register("soap_water_bucket", ()-> new BucketItem(ModFluids.SOURCE_SOAP_WATER,new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DARKCORE_MISC).craftRemainder(Items.BUCKET)));
 
+    public static final RegistryObject<Item> DARK_SWORD = ITEMS.register("dark_sword",
+            () -> new SwordItem(ModTiers.DARKIUM, 10, 5f,
+                    new Item.Properties().tab(ModCreativeModeTab.DARKCORE_MISC).stacksTo(1)));
+
+
 
 
     public static void register(IEventBus eventBus){

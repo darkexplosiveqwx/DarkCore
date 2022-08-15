@@ -20,6 +20,12 @@ public class ModPlacedFeatures {
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
 
 
+    public static final RegistryObject<PlacedFeature> GEMSTONE_ORE_PLACED = PLACED_FEATURES.register("gemstone_ore_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.GEMSTONE_ORE.getHolder().get(),
+                    commonOrePlacement(7, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
+
+
 
 
 

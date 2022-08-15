@@ -3,6 +3,14 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+
+    //ae2 both
+    id "com.diffplug.spotless" version "5.12.4"
+    id "com.matthewprenger.cursegradle" version "1.4.0"
+    id "com.modrinth.minotaur" version "1.2.1"
+
+    //ae2 forge
+    id "idea"
 }
 
 
@@ -146,6 +154,7 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

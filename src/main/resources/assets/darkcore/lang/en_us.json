@@ -12,6 +12,7 @@
   "item.darkcore.zircon" : "Zircon",
   "item.darkcore.raw_zircon" : "Raw Zircon",
   "item.darkcore.soap_water_bucket" : "Soap Water Bucket",
+  "item.darkcore.dark_sword" : "Darkium Sword",
 
   "block.darkcore.dark_block": "Block of Darkium",
   "block.darkcore.dark_ore": "Darkium Ore",
@@ -23,6 +24,7 @@
   "block.darkcore.zircon_lamp": "Zircon Lamp",
   "block.darkcore.dark_air": "Dark Air",
   "block.darkcore.blueberry_crop": "Blueberry Crop",
+  "block.darkcore.deepslate_gemstone_ore": "Deepslate Gemstone Ore",
 
 
 

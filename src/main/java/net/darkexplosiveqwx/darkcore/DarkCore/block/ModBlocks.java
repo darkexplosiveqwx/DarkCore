@@ -56,7 +56,14 @@ public class ModBlocks {
                     .strength(10f).requiresCorrectToolForDrops()), ModCreativeModeTab.DARKCORE_EXTRATAB);
 
 
-  public static final RegistryObject<Block> JUMPY_BLOCK = registerBlock("jumpy_block",
+    public static final RegistryObject<Block> DEEPSLATE_GEMSTONE_ORE = registerBlock("deepslate_gemstone_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(10f).requiresCorrectToolForDrops(), UniformInt.of(10,13)), ModCreativeModeTab.DARKCORE_EXTRATAB);
+
+
+
+
+    public static final RegistryObject<Block> JUMPY_BLOCK = registerBlock("jumpy_block",
             () -> new JumpyBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(10f).requiresCorrectToolForDrops()), ModCreativeModeTab.DARKCORE_MISC);
 

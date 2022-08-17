@@ -55,5 +55,8 @@
   "key.darkcore.drink_water": "Drink Water",
 
   "message.darkcore.drink_water": "Drinking Water!",
-  "message.darkcore.no_water": "No water nearby!"
+  "message.darkcore.no_water": "No water nearby!",
+
+
+  "gui.darkcore.gem_infusing_station": "Gem Infusing Station"
 }

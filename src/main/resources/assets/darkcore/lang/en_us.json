@@ -58,5 +58,7 @@
   "message.darkcore.no_water": "No water nearby!",
 
 
-  "gui.darkcore.gem_infusing_station": "Gem Infusing Station"
+  "gui.darkcore.gem_infusing_station": "Gem Infusing Station",
+
+  "fluid_type.darkcore.soap_water_fluid": "Soap Water"
 }

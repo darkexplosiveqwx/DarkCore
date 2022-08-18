@@ -1,0 +1,11 @@
+{
+  "type": "darkcore:gem_infusing",
+  "ingredients": [
+    {
+      "item": "darkcore:raw_zircon"
+    }
+  ],
+  "output": {
+    "item": "darkcore:zircon"
+  }
+}

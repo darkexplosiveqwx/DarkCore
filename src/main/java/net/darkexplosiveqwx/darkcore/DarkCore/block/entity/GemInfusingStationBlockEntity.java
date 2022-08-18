@@ -1,6 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block.entity;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
+import net.darkexplosiveqwx.darkcore.DarkCore.recipe.GemInfusingStationRecipe;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +17,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.*;
 import org.jetbrains.annotations.*;
+
+import java.util.Optional;
 
 public class GemInfusingStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
@@ -138,25 +141,36 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
 
     private static void craftItem(GemInfusingStationBlockEntity pEntity) {
 
+        Level level = pEntity.level;
+        SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
+        for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
+        }
+
+        assert level != null;
+        Optional<GemInfusingStationRecipe> recipe = level.getRecipeManager()
+                .getRecipeFor(GemInfusingStationRecipe.Type.INSTANCE, inventory, level);
+
         if(hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(1, 1, false);
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(ModItems.ZIRCON.get(),
-                    pEntity.itemHandler.getStackInSlot(2).getCount() + 1));
+            pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(), pEntity.itemHandler.getStackInSlot(2).getCount() + 1));
 
             pEntity.resetProgress();
         }
     }
 
     private static boolean hasRecipe(GemInfusingStationBlockEntity entity) {
+        Level level = entity.level;
+
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasRawGemInFirstSlot = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.RAW_ZIRCON.get();
+        Optional<GemInfusingStationRecipe> recipe = level.getRecipeManager().getRecipeFor(GemInfusingStationRecipe.Type.INSTANCE, inventory, level);
 
-        return hasRawGemInFirstSlot && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.ZIRCON.get(), 1));
+        return recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory) &&
+                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem());
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {

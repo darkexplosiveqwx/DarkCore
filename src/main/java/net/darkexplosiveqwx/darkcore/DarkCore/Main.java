@@ -7,6 +7,7 @@ import net.darkexplosiveqwx.darkcore.DarkCore.fluid.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.recipe.ModRecipes;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationScreen;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.ModMenuTypes;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
@@ -43,6 +44,8 @@ public class Main {
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

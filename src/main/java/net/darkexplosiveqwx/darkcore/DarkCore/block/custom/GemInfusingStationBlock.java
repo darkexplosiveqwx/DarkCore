@@ -25,7 +25,7 @@ public class GemInfusingStationBlock extends BaseEntityBlock {
         super(properties);
     }
 
-    private static final VoxelShape  SHAPE = Block.box(0, 0, 0,  16, 10, 16);
+    private static final VoxelShape  SHAPE = Block.box(0, 0, 0,  16, 9, 16);
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState p_60555_, @NotNull BlockGetter p_60556_, @NotNull BlockPos p_60557_, @NotNull CollisionContext p_60558_) {

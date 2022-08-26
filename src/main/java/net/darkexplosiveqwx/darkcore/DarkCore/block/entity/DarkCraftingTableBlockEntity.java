@@ -1,28 +1,37 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block.entity;
 
+import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.DarkCraftingTableBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.GemInfusingStationBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
-import net.darkexplosiveqwx.darkcore.DarkCore.recipe.GemInfusingStationRecipe;
+import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.*;
-import net.minecraft.world.entity.player.*;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.Containers;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.*;
-import org.jetbrains.annotations.*;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class GemInfusingStationBlockEntity extends BlockEntity implements MenuProvider {
+public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -57,14 +66,14 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
     private int progress = 0;
     private int maxProgress = 78;
 
-    public GemInfusingStationBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.GEM_INFUSING_STATION.get(), pos, state);
+    public DarkCraftingTableBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.DARK_CRAFTING_TABLE.get(), pos, state);
         this.data = new ContainerData() {
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> GemInfusingStationBlockEntity.this.progress;
-                    case 1 -> GemInfusingStationBlockEntity.this.maxProgress;
+                    case 0 -> DarkCraftingTableBlockEntity.this.progress;
+                    case 1 -> DarkCraftingTableBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -72,8 +81,8 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> GemInfusingStationBlockEntity.this.progress = value;
-                    case 1 -> GemInfusingStationBlockEntity.this.maxProgress = value;
+                    case 0 -> DarkCraftingTableBlockEntity.this.progress = value;
+                    case 1 -> DarkCraftingTableBlockEntity.this.maxProgress = value;
                 }
             }
 
@@ -86,7 +95,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("gui.darkcore.gem_infusing_station");
+        return Component.translatable("gui.darkcore.dark_crafting_table");
     }
 
     @Nullable
@@ -103,7 +112,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
             }
 
             if(directionWrappedHandlerMap.containsKey(side)) {
-                Direction localDir = this.getBlockState().getValue(GemInfusingStationBlock.FACING);
+                Direction localDir = this.getBlockState().getValue(DarkCraftingTableBlock.FACING);
 
                 if(side == Direction.UP || side == Direction.DOWN) {
                     return directionWrappedHandlerMap.get(side).cast();
@@ -157,7 +166,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, GemInfusingStationBlockEntity pEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, DarkCraftingTableBlockEntity pEntity) {
         if(level.isClientSide()) {
             return;
         }
@@ -179,7 +188,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
         this.progress = 0;
     }
 
-    private static void craftItem(GemInfusingStationBlockEntity pEntity) {
+    private static void craftItem(DarkCraftingTableBlockEntity pEntity) {
 
         Level level = pEntity.level;
         SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
@@ -188,8 +197,8 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
         }
 
         assert level != null;
-        Optional<GemInfusingStationRecipe> recipe = level.getRecipeManager()
-                .getRecipeFor(GemInfusingStationRecipe.Type.INSTANCE, inventory, level);
+        Optional<DarkCraftingTableRecipe> recipe = level.getRecipeManager()
+                .getRecipeFor(DarkCraftingTableRecipe.Type.INSTANCE, inventory, level);
 
         if(hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(1, 1, false);
@@ -199,7 +208,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
         }
     }
 
-    private static boolean hasRecipe(GemInfusingStationBlockEntity entity) {
+    private static boolean hasRecipe(DarkCraftingTableBlockEntity entity) {
         Level level = entity.level;
 
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
@@ -207,7 +216,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
-        Optional<GemInfusingStationRecipe> recipe = level.getRecipeManager().getRecipeFor(GemInfusingStationRecipe.Type.INSTANCE, inventory, level);
+        Optional<DarkCraftingTableRecipe> recipe = level.getRecipeManager().getRecipeFor(DarkCraftingTableRecipe.Type.INSTANCE, inventory, level);
 
         return recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory) &&
                 canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem());

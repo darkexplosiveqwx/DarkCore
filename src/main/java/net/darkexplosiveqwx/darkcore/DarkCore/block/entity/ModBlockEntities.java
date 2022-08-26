@@ -12,6 +12,9 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<GemInfusingStationBlockEntity>> GEM_INFUSING_STATION = BLOCK_ENTITIES.register("gem_infusing_station",
             () -> BlockEntityType.Builder.of(GemInfusingStationBlockEntity::new, ModBlocks.GEM_INFUSING_STATION.get()).build(null));
 
+  public static final RegistryObject<BlockEntityType<DarkCraftingTableBlockEntity>> DARK_CRAFTING_TABLE = BLOCK_ENTITIES.register("dark_crafting_table",
+            () -> BlockEntityType.Builder.of(DarkCraftingTableBlockEntity::new, ModBlocks.DARK_CRAFTING_TABLE.get()).build(null));
+
 
     public static void  register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);

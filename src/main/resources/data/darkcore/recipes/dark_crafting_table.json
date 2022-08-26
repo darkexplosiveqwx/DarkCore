@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "darkcore:dark_ingot"
+    }},
+    "key": {
+      "O": {
+        "item": "minecraft:crafting_table"
+      }},
+      "key": {
+        "L": {
+          "item": "minecraft:mangrove_log"
+        }
+      },
+    "pattern": [
+      "###",
+      "#O#",
+      "LLL"
+    ],
+      "result": {
+        "item": "darkcore:dark_crafting_table"
+      }}
+

@@ -13,6 +13,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<GemInfusingStationRecipe>> GEM_INFUSING_SERIALIZER =
             SERIALIZERS.register("gem_infusing", () -> GemInfusingStationRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<DarkCraftingTableRecipe>> DARK_CRAFTING_SERIALIZER =
+            SERIALIZERS.register("dark_crafting", () -> DarkCraftingTableRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

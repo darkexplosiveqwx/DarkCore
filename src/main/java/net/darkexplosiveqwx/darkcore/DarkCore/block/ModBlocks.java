@@ -1,10 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
-import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.BlueberryCropBlock;
-import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.GemInfusingStationBlock;
-import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.JumpyBlock;
-import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.ZirconLampBlock;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModCreativeModeTab;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
@@ -52,7 +49,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CITRIN_BLOCK = registerBlock("citrin_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(10f).requiresCorrectToolForDrops()), ModCreativeModeTab.DARKCORE_EXTRATAB);
-  public static final RegistryObject<Block> SAPHIR_BLOCK = registerBlock("saphir_block",
+  public static final RegistryObject<Block> SAPPHIRE_BLOCK = registerBlock("saphir_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(10f).requiresCorrectToolForDrops()), ModCreativeModeTab.DARKCORE_EXTRATAB);
 
@@ -77,6 +74,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> GEM_INFUSING_STATION =registerBlock("gem_infusing_station",
             () -> new GemInfusingStationBlock(BlockBehaviour.Properties.of(Material.METAL).strength(6f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.DARKCORE_MISC);
+
+    public static final RegistryObject<Block> DARK_CRAFTING_TABLE =registerBlock("dark_crafting_table",
+            () -> new DarkCraftingTableBlock(BlockBehaviour.Properties.of(Material.METAL).strength(6f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.DARKCORE_MISC);
 
 
 

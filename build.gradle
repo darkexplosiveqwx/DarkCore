@@ -1,8 +1,23 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+
+
+
 plugins {
     id 'eclipse'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'java'
 
     //ae2 both
     id "com.diffplug.spotless" version "5.12.4+"
@@ -18,6 +33,7 @@ plugins {
     id 'java-base'
 }
 
+apply plugin: 'org.spongepowered.mixin'
 
 group = 'net.darkexplosiveqwx.darkcore.DarkCore'
 version = '0.0.1'
@@ -46,6 +62,7 @@ minecraft {
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'parchment', version: '2022.08.14-1.19.2'
+    //mappings channel: 'official', version: '1.19.2'
     //TODO:UPDATE from https://github.com/ParchmentMC/Parchment/wiki/Getting-Started
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -152,6 +169,57 @@ repositories {
     // }
 
     maven {
+        name = "MelanX maven"
+        url = 'https://maven.melanx.de/'
+    }
+
+    maven{
+        name = "Sponge maven"
+        url = uri("https://repo.spongepowered.org/repository/maven-public/")
+    }
+
+    maven {
+        name = "blamejared"
+        url "https://maven.blamejared.com/"
+    }
+
+    maven {
+        name = "blakesmods"
+        url 'https://maven.blakesmods.com'
+    }
+
+    maven {url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'}
+
+    maven { url "https://maven.theillusivec4.top/" }
+    maven { url "https://maven.tterrag.com/" }
+    maven { url "https://minecraft.curseforge.com/api/maven/" }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+    maven {
+        name = "henkelmax.public"
+        url = 'https://maven.maxhenkel.de/repository/public'
+    }
+
+    maven {
+        name "expandability"
+        url "https://maven.florens.be"
+    }
+
+    maven { url "https://maven.ryanliptak.com/" }
+
+    maven {
+        name 'CC: Tweaked'
+        url 'https://squiddev.cc/maven/'
+    }
+
+
+
+    maven {
         name = "Modmaven"
         url = uri("https://modmaven.dev/")
 
@@ -174,6 +242,7 @@ repositories {
         name = "Local"
         url = file("libs").toURI()
     }
+    mavenCentral()
 }
 
 dependencies {
@@ -183,8 +252,6 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft("net.minecraftforge:forge:${mc_version}-${forge_version}")
 
-    compileOnly(fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:api"))
-    runtimeOnly(fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:all"))
 
 
     // compile against the JEI API but do not include it at runtime
@@ -192,6 +259,136 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+
+
+    compileOnly(fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:api"))
+    runtimeOnly(fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:all"))
+
+    implementation(fg.deobf("appeng:appliedenergistics2:${ae2_version}"))
+
+    runtimeOnly fg.deobf("curse.maven:mekanism-268560:3922056")
+
+
+    annotationProcessor fg.deobf("org.moddingx:LibX:${mc_version}-${libx_version}")
+    implementation fg.deobf("org.moddingx:LibX:${mc_version}-${libx_version}")
+
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}:api")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}:")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}")
+
+    compileOnly fg.deobf("vazkii.autoreglib:AutoRegLib:${arl_version}")
+    runtimeOnly fg.deobf("vazkii.autoreglib:AutoRegLib:${arl_version}")
+
+
+
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.16')
+
+
+    //will work
+
+
+    implementation(fg.deobf("com.blakebr0.cucumber:Cucumber:${mc_old_version}-${cl_version}"))
+    implementation(fg.deobf("com.blakebr0.mysticalagriculture:MysticalAgriculture:${mc_old_version}-${mac_version}"))
+    implementation(fg.deobf("com.blakebr0.mysticalagradditions:MysticalAgradditions:${mc_old_version}-${myst_agraradditions_version}"))
+    implementation(fg.deobf("com.blakebr0.mysticalcustomization:MysticalCustomization:${mc_old_version}-${myst_custom_version}"))
+    implementation(fg.deobf("com.blakebr0.pickletweaks:PickleTweaks:${mc_old_version}-${pickle_tweaks_version}"))
+    implementation(fg.deobf("com.blakebr0.morebuckets:MoreBuckets:${mc_old_version}-${more_buckets_version}"))
+
+    implementation(fg.deobf("com.blakebr0.extendedcrafting:ExtendedCrafting:${mc_old_version}-${extended_crafting_version}"))
+    //implementation(fg.deobf("com.blakebr0.ironjetpacks:IronJetpacks:${mc_old_version}-${iron_jetpacks_version}"))
+
+
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+
+    compileOnly fg.deobf("curse.maven:balm-531761:${balm_cf_file_id}")
+    compileOnly fg.deobf("curse.maven:craftingtweaks-233071:${crafting_tweaks_cf_file_id}")
+    runtimeOnly fg.deobf("curse.maven:craftingtweaks-233071:${crafting_tweaks_cf_file_id}")
+    runtimeOnly fg.deobf("curse.maven:balm-531761:${balm_cf_file_id}")
+
+    //compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}")
+    //runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}")
+
+
+    //implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${mc_version}-${tb_version}")
+
+
+    compileOnly fg.deobf("curse.maven:the-one-probe-245211:3606616")
+
+
+    //implementation fg.deobf("curse.maven:cyclopscore-${cyclopscore_version}")
+
+    //compile "net.darkhax.darkutilities:DarkUtilities-${mc_version}:${dark_utilities_version}"
+
+    //implementation fg.deobf("teamtwilight:twilightforest:${twilightforest_version}:universal")
+
+
+    //runtimeOnly fg.deobf("curse.maven:curious-armor-stands-398784:3579775")
+    //compileOnly fg.deobf("curse.maven:curious-armor-stands-398784:3579775")
+    //implementation fg.deobf("be.florens:expandability-forge:6.0.0")
+
+    compileOnly fg.deobf('curse.maven:controllable-317269:3873303')
+    runtimeOnly fg.deobf('curse.maven:configured-457570:3872190')
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+
+    // d implementation fg.deobf("curse.maven:badpackets-615134:3773642")
+    //implementation fg.deobf("curse.maven:wthit-455982:3856256")
+    //compileOnly fg.deobf("curse.maven:jade-324717:3834997")
+
+    //compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:5.0.38")
+    //testCompileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:5.0.38")
+
+
+    //compileOnly fg.deobf("squeek.appleskin:appleskin-forge:${apple_skin_version}:api")
+    //runtimeOnly fg.deobf("squeek.appleskin:appleskin-forge:${apple_skin_version}")
+
+    compileOnly fg.deobf("curse.maven:CYCLIC-239286:3708026")
+    //runtimeOnly fg.deobf("curse.maven:CYCLIC-239286:3708026")
+
+    compileOnly fg.deobf("org.squiddev:cc-tweaked-${mc_old_version}:${cc_tweaked_version}")
+    compileOnly fg.deobf("blusunrize.immersiveengineering:ImmersiveEngineering:${immersive_engineering_version}")
+    runtimeOnly fg.deobf("org.squiddev:cc-tweaked-${mc_old_version}:${cc_tweaked_version}")
+    runtimeOnly fg.deobf("blusunrize.immersiveengineering:ImmersiveEngineering:${immersive_engineering_version}")
+
+    compileOnly fg.deobf("net.darkhax.gamestages:GameStages-Forge-${mc_old_version}:${gamestages_version}")
+    //runtimeOnly fg.deobf("net.darkhax.gamestages:GameStages-Forge-${mc_old_version}:${gamestages_version}")
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+
+    compileOnly fg.deobf("curse.maven:quark-243121:${quark_cf_file_id}")
+    compileOnly fg.deobf("curse.maven:autoreglib-250363:${autoreglib_cf_file_id}")
+    //runtimeOnly fg.deobf("curse.maven:quark-243121:${quark_cf_file_id}")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:${autoreglib_cf_file_id}")
+
+    if (findProject(':SophisticatedCore') != null) {
+        implementation project(':SophisticatedCore')
+    } else {
+        compileOnly fg.deobf("curse.maven:sophisticatedcore-618298:${sc_cf_file_id}")
+        //runtimeOnly fg.deobf("curse.maven:sophisticatedcore-618298:${sc_cf_file_id}")
+    }
+
+    // compileOnly fg.deobf(group: 'info.journeymap', name: 'journeymap-api', version: project.journeymap_api_forge_version, changing: true)
+    // runtimeOnly fg.deobf("curse.maven:journeymap-${project.journeymap_project_id}:${project.journeymap_forge_file_id}")
+
+    //compileOnly(fg.deobf("me.shedaniel.cloth:cloth-config-forge:8.0.75"))
+    //runtimeOnly(fg.deobf("me.shedaniel.cloth:cloth-config-forge:8.0.75"))
+
+    //implementation fg.deobf("curse.maven:jade-324717:3544015")
+    //implementation fg.deobf("curse.maven:storage-drawers-223852:3574029")
+
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'org.jetbrains:annotations:23.0.0'
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    annotationProcessor 'com.google.code.gson:gson:2.9.0'
+    annotationProcessor 'com.google.guava:guava:31.1-jre'
+    annotationProcessor 'org.ow2.asm:asm-tree:9.3'
+    annotationProcessor 'org.ow2.asm:asm-commons:9.3'
+    annotationProcessor 'org.ow2.asm:asm-util:9.3'
 
 
 

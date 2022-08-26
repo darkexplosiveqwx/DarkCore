@@ -18,8 +18,7 @@ public class ModItems {
 
     public  static final RegistryObject<Item> RUBY = ITEMS.register("ruby", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_EXTRATAB)));
     public  static final RegistryObject<Item> CITRIN = ITEMS.register("citrin", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_EXTRATAB)));
-    public  static final RegistryObject<Item> SAPHIR = ITEMS.register("saphir", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_EXTRATAB)));
-
+    public  static final RegistryObject<Item> SAPPHIRE = ITEMS.register("saphir", ()-> new Item(new Item.Properties().stacksTo(64).tab(ModCreativeModeTab.DARKCORE_EXTRATAB)));
 
     public  static final RegistryObject<Item> DICE = ITEMS.register("dice", ()-> new DiceItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DARKCORE_MISC)));
     public  static final RegistryObject<Item> EIGHT_BALL = ITEMS.register("eight_ball", ()-> new EightBallItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DARKCORE_MISC)));

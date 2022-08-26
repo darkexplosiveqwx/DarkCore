@@ -27,6 +27,7 @@
   "block.darkcore.deepslate_gemstone_ore": "Deepslate Gemstone Ore",
 
   "block.darkcore.gem_infusing_station": "Gem Infusing Station",
+  "block.darkcore.dark_crafting_table": "Dark Workbench",
 
 
 
@@ -59,6 +60,7 @@
 
 
   "gui.darkcore.gem_infusing_station": "Gem Infusing Station",
+  "gui.darkcore.dark_crafting_table": "Dark Workbench",
 
   "fluid_type.darkcore.soap_water_fluid": "Soap Water"
 }

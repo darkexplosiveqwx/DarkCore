@@ -4,7 +4,7 @@
   "experience": 1,
   "group": "dark_ingot",
   "ingredient": {
-    "tag": "darkcore:dark_ores"
+    "tag": "darkcore:ores/dark_ores"
   },
   "result": "darkcore:dark_ingot"
 }

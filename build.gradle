@@ -31,6 +31,9 @@ plugins {
     id 'org.parchmentmc.compass' version '0.8.1+'
     id 'org.parchmentmc.writtenbooks' version '0.5.+'
     id 'java-base'
+
+    id 'se.bjurr.gitchangelog.git-changelog-gradle-plugin' version '1.71.4'
+
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -371,6 +374,21 @@ dependencies {
         //runtimeOnly fg.deobf("curse.maven:sophisticatedcore-618298:${sc_cf_file_id}")
     }
 
+    /*compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:${top_version}") {
+        exclude group: "net.minecraftforge", module: "forge"
+    }
+    implementation fg.deobf("curse.maven:jade-324717:${jade_curse_id}")
+
+    for (extraModJar in fileTree(dir: extraModsDir, include: '*.jar')) {
+        def basename = extraModJar.name.substring(0, extraModJar.name.length() - ".jar".length())
+        def versionSep = basename.lastIndexOf('-')
+        assert versionSep != -1
+        def artifactId = basename.substring(0, versionSep)
+        def version = basename.substring(versionSep + 1)
+        runtimeOnly fg.deobf("extra-mods:$artifactId:$version")
+    }
+**/
+
     // compileOnly fg.deobf(group: 'info.journeymap', name: 'journeymap-api', version: project.journeymap_api_forge_version, changing: true)
     // runtimeOnly fg.deobf("curse.maven:journeymap-${project.journeymap_project_id}:${project.journeymap_forge_file_id}")
 
@@ -445,3 +463,5 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
+println "Build DarkCore successful! "

@@ -4,7 +4,7 @@
   "experience": 1,
   "group": "zircon",
   "ingredient": {
-    "tag": "darkcore:zircon_ores"
+    "tag": "darkcore:ores/zircon_ores"
   },
   "result": "darkcore:zircon"
 }

@@ -8,6 +8,7 @@ import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.ModRecipes;
+import net.darkexplosiveqwx.darkcore.DarkCore.screen.DarkCraftingTableScreen;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationScreen;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.ModMenuTypes;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
@@ -28,6 +29,8 @@ public class Main {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public Main() {
+        LOGGER.debug("Mod DarkCore started!");
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
@@ -47,9 +50,12 @@ public class Main {
 
         ModRecipes.register(modEventBus);
 
+        LOGGER.debug("registered all classes!");
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+        LOGGER.debug("Successful!");
     }
 
     private void commonSetup(final @NotNull FMLCommonSetupEvent event){
@@ -59,6 +65,7 @@ public class Main {
         });
 
         ModMessages.register();
+        LOGGER.debug("Successful commonSetup!");
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -69,6 +76,8 @@ public class Main {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
 
             MenuScreens.register(ModMenuTypes.GEM_INFUSING_STATION_MENU.get(), GemInfusingStationScreen::new);
+            MenuScreens.register(ModMenuTypes.DARK_CRAFTING_TABLE_MENU.get(), DarkCraftingTableScreen::new);
+            LOGGER.debug("Successful onClientSetup!");
         }
     }
 

@@ -30,5 +30,26 @@
   "text.darkcore.diceiteminfo": "Right Click to get Random Number",
 
 
-  "entity.minecraft.villager.darkcore.jumpy_master": "Jumpy Master"
+  "entity.minecraft.villager.darkcore.jumpy_master": "Jumpy Master",
+  "item.darkcore.zircon": "Zircon",
+  "item.darkcore.raw_zircon": "Raw Zircon",
+  "item.darkcore.soap_water_bucket": "Soap Water Bucket",
+  "item.darkcore.dark_sword": "Darkium Sword",
+  "block.darkcore.deepslate_gemstone_ore": "Deepslate Gemstone Ore",
+  "block.darkcore.gem_infusing_station": "Gem Infusing Station",
+  "block.darkcore.dark_crafting_table": "Dark Workbench",
+  "block.darkcore.zircon_ore": "Zircon Ore",
+  "block.darkcore.deepslate_zircon_ore": "Deepslate Zircon Ore",
+  "block.darkcore.endstone_zircon_ore": "Endstone Zircon Ore",
+  "block.darkcore.netherrack_zircon_ore": "Netherrack Zircon Ore",
+  "block.darkcore.zircon_block": "Zircon Block",
+  "itemGroup.darkcore_zircon": "DarkCore-Zircon",
+  "key.category.darkcore.main": "DarkCore-Main",
+  "key.category.darkcore.util": "DarkCore-Utilities",
+  "key.darkcore.drink_water": "Drink Water",
+  "message.darkcore.drink_water": "Drinking Water!",
+  "message.darkcore.no_water": "No water nearby!",
+  "gui.darkcore.gem_infusing_station": "Gem Infusing Station",
+  "gui.darkcore.dark_crafting_table": "Dark Workbench",
+  "fluid_type.darkcore.soap_water_fluid": "Soap Water"
 }

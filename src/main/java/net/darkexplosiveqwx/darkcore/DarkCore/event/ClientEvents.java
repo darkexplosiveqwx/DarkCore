@@ -1,6 +1,8 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.event;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.ModBlockEntities;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.renderer.GemInfusingStationBlockEntityRenderer;
 import net.darkexplosiveqwx.darkcore.DarkCore.client.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.*;
@@ -32,6 +34,11 @@ public class ClientEvents {
         @SubscribeEvent
         public static void registerGUIOverlays(RegisterGuiOverlaysEvent event){
             event.registerAboveAll("thirst", ThirstHudOverlay.HUD_THIRST);
+        }
+        @SubscribeEvent
+        public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.GEM_INFUSING_STATION.get(),
+                    GemInfusingStationBlockEntityRenderer::new);
         }
     }
 

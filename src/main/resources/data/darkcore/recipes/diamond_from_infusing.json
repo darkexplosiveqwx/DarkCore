@@ -1,0 +1,15 @@
+{
+  "type": "darkcore:gem_infusing",
+  "ingredients": [
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
+  "fluid": {
+    "FluidName": "darkcore:soap_water_fluid",
+    "Amount": 250
+  },
+  "output": {
+    "item": "minecraft:diamond"
+  }
+}

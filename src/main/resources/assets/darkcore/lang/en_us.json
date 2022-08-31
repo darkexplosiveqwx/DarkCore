@@ -62,5 +62,8 @@
   "gui.darkcore.gem_infusing_station": "Gem Infusing Station",
   "gui.darkcore.dark_crafting_table": "Dark Workbench",
 
-  "fluid_type.darkcore.soap_water_fluid": "Soap Water"
+  "fluid_type.darkcore.soap_water_fluid": "Soap Water",
+
+  "darkcore.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "darkcore.tooltip.liquid.amount": "%s mB"
 }

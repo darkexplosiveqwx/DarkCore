@@ -9,14 +9,21 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author darkexplosiveqwx
+ * @author kaupenjoe
+ */
 public class GemInfusingStationMenu extends AbstractContainerMenu {
     public final GemInfusingStationBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private FluidStack fluidStack;
+
 
     public GemInfusingStationMenu(int id, Inventory inv, FriendlyByteBuf extraData){
         this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
@@ -28,11 +35,13 @@ public class GemInfusingStationMenu extends AbstractContainerMenu {
         blockEntity = (GemInfusingStationBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
+        this.fluidStack = blockEntity.getFluidStack();
+
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 12, 15));
             this.addSlot(new SlotItemHandler(handler, 1, 86, 15));
             this.addSlot(new SlotItemHandler(handler, 2, 86, 60));
@@ -43,6 +52,18 @@ public class GemInfusingStationMenu extends AbstractContainerMenu {
 
     public boolean isCrafting() {
         return data.get(0) > 0;
+    }
+
+    public void setFluid(FluidStack fluidStack) {
+        this.fluidStack = fluidStack;
+    }
+
+    public FluidStack getFluidStack() {
+        return fluidStack;
+    }
+
+    public GemInfusingStationBlockEntity getBlockEntity() {
+        return this.blockEntity;
     }
 
     public int getScaledProgress() {
@@ -75,7 +96,9 @@ public class GemInfusingStationMenu extends AbstractContainerMenu {
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if(!sourceSlot.hasItem()) {
+            return ItemStack.EMPTY;  //EMPTY_ITEM
+        }
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -106,7 +129,7 @@ public class GemInfusingStationMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
                 player, ModBlocks.GEM_INFUSING_STATION.get());
     }

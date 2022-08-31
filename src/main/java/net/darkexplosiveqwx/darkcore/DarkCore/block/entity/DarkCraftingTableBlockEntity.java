@@ -1,9 +1,9 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block.entity;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.DarkCraftingTableBlock;
-import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.GemInfusingStationBlock;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
+import net.darkexplosiveqwx.darkcore.DarkCore.screen.DarkCraftingTableMenu;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,8 +21,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -31,8 +31,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
+
 public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -100,13 +101,13 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        return new GemInfusingStationMenu(id, inventory, this, this.data);
+    public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+        return new DarkCraftingTableMenu(id, inventory, this, this.data);
     }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             if(side == null) {
                 return lazyItemHandler.cast();
             }
@@ -145,16 +146,16 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
-        nbt.putInt("gem_infusing_station.progress", this.progress);
+        nbt.putInt("dark_crafting_table.progress", this.progress);
 
         super.saveAdditional(nbt);
     }
 
     @Override
-    public void load(CompoundTag nbt) {
+    public void load(@NotNull CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
-        progress = nbt.getInt("gem_infusing_station.progress");
+        progress = nbt.getInt("dark_crafting_table.progress");
     }
 
     public void drops() {

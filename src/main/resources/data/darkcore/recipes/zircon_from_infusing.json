@@ -5,6 +5,10 @@
       "item": "darkcore:raw_zircon"
     }
   ],
+  "fluid": {
+    "FluidName": "minecraft:water",
+    "Amount": 500
+  },
   "output": {
     "item": "darkcore:zircon"
   }

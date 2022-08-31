@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "darkcore:blueberry"
+    }
+  ],
+  "result": {
+    "item": "darkcore:blueberry_seeds"
+  }
+}

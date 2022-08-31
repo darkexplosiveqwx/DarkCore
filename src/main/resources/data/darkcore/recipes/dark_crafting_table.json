@@ -1,24 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#O#",
+    "LUL"
+  ],
   "key": {
+    "L": {
+      "tag": "minecraft:mangrove_logs"
+    },
     "#": {
-      "item": "darkcore:dark_ingot"
-    }},
-    "key": {
-      "O": {
-        "item": "minecraft:crafting_table"
-      }},
-      "key": {
-        "L": {
-          "item": "minecraft:mangrove_log"
-        }
-      },
-    "pattern": [
-      "###",
-      "#O#",
-      "LLL"
-    ],
-      "result": {
-        "item": "darkcore:dark_crafting_table"
-      }}
-
+      "item": "darkcore:dark_block"
+    },
+    "O": {
+      "item": "minecraft:crafting_table"
+    },
+    "U": {
+      "item": "darkcore:zircon_block"
+    }
+  },
+  "result": {
+    "item": "darkcore:dark_crafting_table"
+  }
+}

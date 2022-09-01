@@ -1,10 +1,15 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block.entity;
 
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.DarkCraftingTableBlock;
+import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.ModMessages;
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.EnergySyncS2CPacket;
+import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.FluidSyncS2CPacket;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.DarkCraftingTableMenu;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
+import net.darkexplosiveqwx.darkcore.DarkCore.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -20,9 +25,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -43,13 +53,46 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == ModItems.ZIRCON.get();
-                case 1 -> stack.getItem() == ModItems.RAW_ZIRCON.get();
+                case 0 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
+                case 1 -> true;
                 case 2 -> false;
                 default -> super.isItemValid(slot, stack);
             };
         }
     };
+
+    private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(200000, 256) {
+        @Override
+        public void onEnergyChanged() {
+            setChanged();
+            ModMessages.sendToClients(new EnergySyncS2CPacket(this.energy, getBlockPos()));
+        }
+    };
+    private static final int ENERGY_REQ = 32;
+
+    private final FluidTank FLUID_TANK = new FluidTank(64000) {
+        @Override
+        protected void onContentsChanged() {
+            setChanged();
+            assert level != null;
+            if(!level.isClientSide()) {
+                ModMessages.sendToClients(new FluidSyncS2CPacket(this.fluid, worldPosition));
+            }
+        }
+
+        @Override
+        public boolean isFluidValid(FluidStack stack) {
+            return stack.getFluid() == Fluids.WATER || stack.getFluid() == ModFluids.SOURCE_SOAP_WATER.get();
+        }
+    };
+
+    public void setFluid(FluidStack stack) {
+        this.FLUID_TANK.setFluid(stack);
+    }
+
+    public FluidStack getFluidStack() {
+        return this.FLUID_TANK.getFluid();
+    }
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
@@ -61,6 +104,11 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
                             (index, stack) -> itemHandler.isItemValid(1, stack))),
                     Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0 || index == 1,
                             (index, stack) -> itemHandler.isItemValid(0, stack) || itemHandler.isItemValid(1, stack))));
+
+
+    private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
+
 
 
     protected final ContainerData data;
@@ -95,18 +143,32 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return Component.translatable("gui.darkcore.dark_crafting_table");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+        ModMessages.sendToClients(new EnergySyncS2CPacket(this.ENERGY_STORAGE.getEnergyStored(), getBlockPos()));
+        ModMessages.sendToClients(new FluidSyncS2CPacket(this.getFluidStack(), worldPosition));
         return new DarkCraftingTableMenu(id, inventory, this, this.data);
+    }
+
+    public IEnergyStorage getEnergyStorage() {
+        return ENERGY_STORAGE;
+    }
+
+    public void setEnergyLevel(int energy) {
+        this.ENERGY_STORAGE.setEnergy(energy);
     }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if(cap == ForgeCapabilities.ENERGY) {
+            return lazyEnergyHandler.cast();
+        }
+
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
             if(side == null) {
                 return lazyItemHandler.cast();
@@ -127,6 +189,9 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
                 };
             }
         }
+        if(cap == ForgeCapabilities.FLUID_HANDLER) {
+            return lazyFluidHandler.cast();
+        }
 
         return super.getCapability(cap, side);
     }
@@ -135,18 +200,30 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        lazyEnergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
+
+
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        lazyEnergyHandler.invalidate();
+        lazyFluidHandler.invalidate();
+
+
     }
 
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
         nbt.putInt("dark_crafting_table.progress", this.progress);
+        nbt.putInt("dark_crafting_table.energy", ENERGY_STORAGE.getEnergyStored());
+        nbt = FLUID_TANK.writeToNBT(nbt);
+
+
 
         super.saveAdditional(nbt);
     }
@@ -156,6 +233,10 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
         progress = nbt.getInt("dark_crafting_table.progress");
+        ENERGY_STORAGE.setEnergy(nbt.getInt("dark_crafting_table.energy"));
+        FLUID_TANK.readFromNBT(nbt);
+
+
     }
 
     public void drops() {
@@ -164,6 +245,7 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
+        assert this.level != null;
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
@@ -172,8 +254,13 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
             return;
         }
 
-        if(hasRecipe(pEntity)) {
+        if(hasGemInFirstSlot(pEntity)) {
+            pEntity.ENERGY_STORAGE.receiveEnergy(64, false);
+        }
+
+        if(hasRecipe(pEntity) && hasEnoughEnergy(pEntity)) {
             pEntity.progress++;
+            extractEnergy(pEntity);
             setChanged(level, pos, state);
 
             if(pEntity.progress >= pEntity.maxProgress) {
@@ -183,7 +270,46 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
             pEntity.resetProgress();
             setChanged(level, pos, state);
         }
+        if(hasFluidItemInSourceSlot(pEntity)) {
+            transferItemFluidToFluidTank(pEntity);
+        }
     }
+
+    private static void transferItemFluidToFluidTank(DarkCraftingTableBlockEntity pEntity) {
+        pEntity.itemHandler.getStackInSlot(0).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
+            int drainAmount = Math.min(pEntity.FLUID_TANK.getSpace(), 1000);
+
+            FluidStack stack = handler.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+            if(pEntity.FLUID_TANK.isFluidValid(stack)) {
+                stack = handler.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                fillTankWithFluid(pEntity, stack, handler.getContainer());
+            }
+        });
+    }
+
+    private static void fillTankWithFluid(DarkCraftingTableBlockEntity pEntity, FluidStack stack, ItemStack container) {
+        pEntity.FLUID_TANK.fill(stack, IFluidHandler.FluidAction.EXECUTE);
+
+        pEntity.itemHandler.extractItem(0, 1, false);
+        pEntity.itemHandler.insertItem(0, container, false);
+    }
+
+    private static boolean hasFluidItemInSourceSlot(DarkCraftingTableBlockEntity pEntity) {
+        return pEntity.itemHandler.getStackInSlot(0).getCount() > 0;
+    }
+
+    private static void extractEnergy(DarkCraftingTableBlockEntity pEntity) {
+        pEntity.ENERGY_STORAGE.extractEnergy(ENERGY_REQ, false);
+    }
+
+    private static boolean hasEnoughEnergy(DarkCraftingTableBlockEntity pEntity) {
+        return pEntity.ENERGY_STORAGE.getEnergyStored() >= ENERGY_REQ * pEntity.maxProgress;
+    }
+
+    private static boolean hasGemInFirstSlot(DarkCraftingTableBlockEntity pEntity) {
+        return pEntity.itemHandler.getStackInSlot(0).getItem() == ModItems.ZIRCON.get();
+    }
+
 
     private void resetProgress() {
         this.progress = 0;
@@ -202,6 +328,8 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
                 .getRecipeFor(DarkCraftingTableRecipe.Type.INSTANCE, inventory, level);
 
         if(hasRecipe(pEntity)) {
+            pEntity.FLUID_TANK.drain(recipe.get().getFluid().getAmount(), IFluidHandler.FluidAction.EXECUTE);
+
             pEntity.itemHandler.extractItem(1, 1, false);
             pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(), pEntity.itemHandler.getStackInSlot(2).getCount() + 1));
 
@@ -220,8 +348,16 @@ public class DarkCraftingTableBlockEntity extends BlockEntity implements MenuPro
         Optional<DarkCraftingTableRecipe> recipe = level.getRecipeManager().getRecipeFor(DarkCraftingTableRecipe.Type.INSTANCE, inventory, level);
 
         return recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem());
+                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem())
+                && hasCorrectFluidInTank(entity, recipe) && hasCorrectFluidAmountInTank(entity, recipe);
     }
+
+    private static boolean hasCorrectFluidAmountInTank(DarkCraftingTableBlockEntity entity, Optional<DarkCraftingTableRecipe> recipe) {
+        return entity.FLUID_TANK.getFluidAmount() >= recipe.get().getFluid().getAmount();
+    }
+
+    private static boolean hasCorrectFluidInTank(DarkCraftingTableBlockEntity entity, Optional<DarkCraftingTableRecipe> recipe) {
+        return recipe.get().getFluid().equals(entity.FLUID_TANK.getFluid());    }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
         return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();

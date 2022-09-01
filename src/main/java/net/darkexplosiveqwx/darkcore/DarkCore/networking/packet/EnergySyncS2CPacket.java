@@ -1,7 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.networking.packet;
 
-import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.GemInfusingStationBlockEntity;
-import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
+import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.*;
+import net.darkexplosiveqwx.darkcore.DarkCore.screen.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -37,6 +37,14 @@ public class EnergySyncS2CPacket {
                 blockEntity.setEnergyLevel(energy);
 
                 if(Minecraft.getInstance().player.containerMenu instanceof GemInfusingStationMenu menu &&
+                        menu.getBlockEntity().getBlockPos().equals(pos)) {
+                    blockEntity.setEnergyLevel(energy);
+                }
+            }
+            if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof DarkCraftingTableBlockEntity blockEntity) {
+                blockEntity.setEnergyLevel(energy);
+
+                if(Minecraft.getInstance().player.containerMenu instanceof DarkCraftingTableMenu menu &&
                         menu.getBlockEntity().getBlockPos().equals(pos)) {
                     blockEntity.setEnergyLevel(energy);
                 }

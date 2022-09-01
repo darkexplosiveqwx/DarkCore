@@ -1,6 +1,8 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.networking.packet;
 
+import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.DarkCraftingTableBlockEntity;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.GemInfusingStationBlockEntity;
+import net.darkexplosiveqwx.darkcore.DarkCore.screen.DarkCraftingTableMenu;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -37,6 +39,14 @@ public class FluidSyncS2CPacket {
                     blockEntity.setFluid(this.fluidStack);
 
                     if(Minecraft.getInstance().player.containerMenu instanceof GemInfusingStationMenu menu &&
+                            menu.getBlockEntity().getBlockPos().equals(pos)) {
+                        menu.setFluid(this.fluidStack);
+                    }
+                }
+                if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof DarkCraftingTableBlockEntity blockEntity) {
+                    blockEntity.setFluid(this.fluidStack);
+
+                    if(Minecraft.getInstance().player.containerMenu instanceof DarkCraftingTableMenu menu &&
                             menu.getBlockEntity().getBlockPos().equals(pos)) {
                         menu.setFluid(this.fluidStack);
                     }

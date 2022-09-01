@@ -1,0 +1,15 @@
+{
+  "type": "darkcore:dark_crafting",
+  "ingredients": [
+    {
+      "item": "darkcore:raw_dark_ingot"
+    }
+  ],
+  "fluid": {
+    "FluidName": "darkcore:soap_water",
+    "Amount": 750
+  },
+  "output": {
+    "item": "darkcore:dark_ingot"
+  }
+}

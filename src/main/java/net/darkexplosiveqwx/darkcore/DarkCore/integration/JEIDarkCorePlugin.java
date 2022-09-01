@@ -4,6 +4,7 @@ import mezz.jei.api.*;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.GemInfusingStationRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +18,7 @@ public class JEIDarkCorePlugin implements IModPlugin {
 
 
     public static RecipeType<GemInfusingStationRecipe> INFUSION_TYPE = new RecipeType<>(GemInfusingStationRecipeCategory.UID, GemInfusingStationRecipe.class);
+    public static RecipeType<DarkCraftingTableRecipe> DARK_CRAFTING_TYPE = new RecipeType<>(DarkCraftingTableRecipeCategory.UID, DarkCraftingTableRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -27,6 +29,8 @@ public class JEIDarkCorePlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new
                 GemInfusingStationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new
+                DarkCraftingTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
 
@@ -36,6 +40,8 @@ public class JEIDarkCorePlugin implements IModPlugin {
 
         List<GemInfusingStationRecipe> recipesInfusing = rm.getAllRecipesFor(GemInfusingStationRecipe.Type.INSTANCE);
         registration.addRecipes(INFUSION_TYPE, recipesInfusing);
+        List<DarkCraftingTableRecipe> recipesDarkCrafting = rm.getAllRecipesFor(DarkCraftingTableRecipe.Type.INSTANCE);
+        registration.addRecipes(DARK_CRAFTING_TYPE, recipesDarkCrafting);
     }
 }
 

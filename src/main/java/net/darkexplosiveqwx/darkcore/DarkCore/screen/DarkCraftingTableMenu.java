@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,6 +22,8 @@ public class DarkCraftingTableMenu extends AbstractContainerMenu {
     public final DarkCraftingTableBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private FluidStack fluidStack;
+
 
     public DarkCraftingTableMenu(int id, Inventory inv, FriendlyByteBuf extraData){
         this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
@@ -32,6 +35,8 @@ public class DarkCraftingTableMenu extends AbstractContainerMenu {
         blockEntity = (DarkCraftingTableBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
+        this.fluidStack = blockEntity.getFluidStack();
+
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -40,8 +45,8 @@ public class DarkCraftingTableMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(handler, 0, 12, 15));
             this.addSlot(new SlotItemHandler(handler, 1, 86, 15));
             this.addSlot(new SlotItemHandler(handler, 2, 86, 60));
-            this.addSlot(new SlotItemHandler(handler, 3, 118, 60));
-            this.addSlot(new SlotItemHandler(handler, 4, 92, 15));
+            this.addSlot(new SlotItemHandler(handler, 3, 136, 60));
+            this.addSlot(new SlotItemHandler(handler, 4, 104, 15));
         });
 
         addDataSlots(data);
@@ -49,6 +54,17 @@ public class DarkCraftingTableMenu extends AbstractContainerMenu {
 
     public boolean isCrafting() {
         return data.get(0) > 0;
+    }
+
+    public void setFluid(FluidStack fluidStack) {
+        this.fluidStack = fluidStack;
+    }
+
+    public FluidStack getFluidStack() {
+        return fluidStack;
+    }
+    public DarkCraftingTableBlockEntity getBlockEntity() {
+        return this.blockEntity;
     }
 
     public int getScaledProgress() {
@@ -59,13 +75,13 @@ public class DarkCraftingTableMenu extends AbstractContainerMenu {
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
-    /* CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
+    /** CREDIT GOES TO: diesieben07 | <a href="https://github.com/diesieben07/SevenCommons">...</a>
      must assign a slot number to each of the slots used by the GUI.
      For this container, we can see both the tile inventory's slots as well as the player inventory slots and the hotbar.
      Each time we add a Slot to the container, it automatically increases the slotIndex, which means
-      0 - 8 = hotbar slots (which will map to the InventoryPlayer slot numbers 0 - 8)
-      9 - 35 = player inventory slots (which map to the InventoryPlayer slot numbers 9 - 35)
-      36 - 44 = TileInventory slots, which map to our TileEntity slot numbers 0 - 8) */
+     0 - 8 = hotbar slots (which will map to the InventoryPlayer slot numbers 0 - 8)
+     9 - 35 = player inventory slots (which map to the InventoryPlayer slot numbers 9 - 35)
+     36 - 44 = TileInventory slots, which map to our TileEntity slot numbers 0 - 8) */
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;

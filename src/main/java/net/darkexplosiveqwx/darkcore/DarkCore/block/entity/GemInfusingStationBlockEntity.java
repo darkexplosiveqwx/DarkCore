@@ -73,6 +73,7 @@ public class GemInfusingStationBlockEntity extends BlockEntity implements MenuPr
         @Override
         protected void onContentsChanged() {
             setChanged();
+            assert level != null;
             if(!level.isClientSide()) {
                 ModMessages.sendToClients(new FluidSyncS2CPacket(this.fluid, worldPosition));
             }

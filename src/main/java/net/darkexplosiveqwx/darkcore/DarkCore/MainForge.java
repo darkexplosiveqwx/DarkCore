@@ -3,6 +3,9 @@ package net.darkexplosiveqwx.darkcore.DarkCore;
 import com.mojang.logging.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.entity.ModBlockEntities;
+import net.darkexplosiveqwx.darkcore.DarkCore.effect.ModEffects;
+import net.darkexplosiveqwx.darkcore.DarkCore.entity.mob.ModMobs;
+import net.darkexplosiveqwx.darkcore.DarkCore.item.enchantment.ModEnchantments;
 import net.darkexplosiveqwx.darkcore.DarkCore.fluid.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
@@ -49,6 +52,13 @@ public class Main {
         ModMenuTypes.register(modEventBus);
 
         ModRecipes.register(modEventBus);
+
+        ModEnchantments.register(modEventBus);
+
+        ModEffects.register(modEventBus);
+
+        ModMobs.register(modEventBus);
+
 
         LOGGER.debug("registered all classes!");
 

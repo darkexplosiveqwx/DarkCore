@@ -1,6 +1,6 @@
-package net.darkexplosiveqwx.darkcore.DarkCore.enchantment;
+package net.darkexplosiveqwx.darkcore.DarkCore.item.enchantment;
 
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -12,7 +12,7 @@ public class ModEnchantments {
     public static final EnchantmentCategory EVERYTHING = EnchantmentCategory.create("enchantment.category.darkcore.everything", item -> TOOLS.canEnchant(item) || EnchantmentCategory.WEARABLE.canEnchant(item) || EnchantmentCategory.VANISHABLE.canEnchant(item) || EnchantmentCategory.BREAKABLE.canEnchant(item));
 
     public static final DeferredRegister<Enchantment> ENCHANTMENTS =
-            DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Main.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, MainForge.MOD_ID);
 
 
     public static RegistryObject<Enchantment> LIGHTNING_STRIKER =

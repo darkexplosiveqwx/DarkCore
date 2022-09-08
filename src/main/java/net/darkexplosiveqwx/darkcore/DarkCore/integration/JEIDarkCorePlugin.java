@@ -3,7 +3,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.integration;
 import mezz.jei.api.*;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.GemInfusingStationRecipe;
 import net.minecraft.client.Minecraft;
@@ -22,7 +22,7 @@ public class JEIDarkCorePlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(Main.MOD_ID, "jei_plugin");
+        return new ResourceLocation(MainForge.MOD_ID, "jei_plugin");
     }
 
     @Override

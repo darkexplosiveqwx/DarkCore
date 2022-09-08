@@ -1,6 +1,6 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.block;
 
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.custom.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModCreativeModeTab;
@@ -23,7 +23,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 public class ModBlocks {
-    public static final DeferredRegister<Block> BLOCKS =DeferredRegister.create(ForgeRegistries.BLOCKS, Main.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS =DeferredRegister.create(ForgeRegistries.BLOCKS, MainForge.MOD_ID);
 
 
     //The Block

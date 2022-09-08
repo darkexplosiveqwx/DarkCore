@@ -2,9 +2,8 @@ package net.darkexplosiveqwx.darkcore.DarkCore.fluid;
 
 
 import com.mojang.math.Vector3f;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.minecraft.resources.*;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.SoundAction;
@@ -15,9 +14,9 @@ import net.minecraftforge.registries.*;
 public class ModFluidsTypes {
     public static final ResourceLocation WATER_STILL_RL = new ResourceLocation("block/water_still");
     public static final ResourceLocation WATER_FLOWING_RL = new ResourceLocation("block/water_flow");
-    public static final ResourceLocation SOAP_OVERLAY_RL = new ResourceLocation(Main.MOD_ID, "misc/in_soap_water");
+    public static final ResourceLocation SOAP_OVERLAY_RL = new ResourceLocation(MainForge.MOD_ID, "misc/in_soap_water");
 
-    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Main.MOD_ID);
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, MainForge.MOD_ID);
 
 
     public static RegistryObject<FluidType> SOAP_WATER_FLUID_TYPE = register("soap_water_fluid", SOAP_OVERLAY_RL, FluidType.Properties.create().lightLevel(2).density(15).viscosity(5).sound(SoundAction.get("drink"), SoundEvents.HONEY_DRINK).canDrown(true).canSwim(false).canPushEntity(true).rarity(Rarity.EPIC));

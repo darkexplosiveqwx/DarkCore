@@ -9,7 +9,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
 import net.minecraft.network.chat.Component;
@@ -20,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class DarkCraftingTableRecipeCategory implements IRecipeCategory<DarkCraftingTableRecipe> {
-    public final static ResourceLocation UID = new ResourceLocation(Main.MOD_ID, "dark_crafting");
-    public final static ResourceLocation TEXTURE = new ResourceLocation(Main.MOD_ID, "textures/gui/dark_crafting_table_gui.png");
+    public final static ResourceLocation UID = new ResourceLocation(MainForge.MOD_ID, "dark_crafting");
+    public final static ResourceLocation TEXTURE = new ResourceLocation(MainForge.MOD_ID, "textures/gui/dark_crafting_table_gui.png");
 
     private final IDrawable background;
     private final IDrawable icon;

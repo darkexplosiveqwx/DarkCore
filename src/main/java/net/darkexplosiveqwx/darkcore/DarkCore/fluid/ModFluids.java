@@ -1,7 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.fluid;
 
 
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.ModItems;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.*;
 
 public class ModFluids{
-    public static final DeferredRegister<Fluid> FLUIDS =DeferredRegister.create(ForgeRegistries.FLUIDS, Main.MOD_ID);
+    public static final DeferredRegister<Fluid> FLUIDS =DeferredRegister.create(ForgeRegistries.FLUIDS, MainForge.MOD_ID);
 
 
     public static final RegistryObject<FlowingFluid> SOURCE_SOAP_WATER = FLUIDS.register("soap_water_fluid", () -> new ForgeFlowingFluid.Source(ModFluids.SOAP_WATER_FLUID_PROPERTIES));

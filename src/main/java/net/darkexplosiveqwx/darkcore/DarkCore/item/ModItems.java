@@ -1,6 +1,6 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.item;
 
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.darkexplosiveqwx.darkcore.DarkCore.fluid.ModFluids;
 import net.darkexplosiveqwx.darkcore.DarkCore.item.custom.*;
@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.registries.*;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MainForge.MOD_ID);
 
     public  static final RegistryObject<Item> DARK_INGOT = ITEMS.register("dark_ingot", ()-> new Item(new Item.Properties().stacksTo(32).tab(ModCreativeModeTab.DARKCORE_DARK_TAB).rarity(Rarity.RARE).fireResistant()));
     public  static final RegistryObject<Item> DARK_GEM = ITEMS.register("dark_gem", ()-> new Item(new Item.Properties().stacksTo(32).tab(ModCreativeModeTab.DARKCORE_DARK_TAB).rarity(Rarity.RARE).fireResistant()));

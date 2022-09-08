@@ -11,9 +11,7 @@ import net.darkexplosiveqwx.darkcore.DarkCore.item.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.painting.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.ModRecipes;
-import net.darkexplosiveqwx.darkcore.DarkCore.screen.DarkCraftingTableScreen;
-import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationScreen;
-import net.darkexplosiveqwx.darkcore.DarkCore.screen.ModMenuTypes;
+import net.darkexplosiveqwx.darkcore.DarkCore.screen.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.world.feature.*;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -26,12 +24,15 @@ import net.minecraftforge.fml.javafmlmod.*;
 import org.jetbrains.annotations.*;
 import org.slf4j.*;
 
-@Mod(Main.MOD_ID)
-public class Main {
+/**
+ * @author darkexplosivqwx
+ */
+@Mod(MainForge.MOD_ID)
+public class MainForge {
     public static final String MOD_ID = "darkcore";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public Main() {
+    public MainForge() {
         LOGGER.debug("Mod DarkCore started!");
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

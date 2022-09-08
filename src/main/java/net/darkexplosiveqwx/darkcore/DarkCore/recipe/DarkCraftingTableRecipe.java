@@ -2,7 +2,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.util.FluidJSONUtil;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
@@ -91,7 +91,7 @@ public class DarkCraftingTableRecipe implements Recipe<SimpleContainer> {
     public static class Serializer implements RecipeSerializer<DarkCraftingTableRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
-                new ResourceLocation(Main.MOD_ID, "dark_crafting");
+                new ResourceLocation(MainForge.MOD_ID, "dark_crafting");
 
         @Override
         public @NotNull DarkCraftingTableRecipe fromJson(@NotNull ResourceLocation pRecipeId, @NotNull JsonObject pSerializedRecipe) {

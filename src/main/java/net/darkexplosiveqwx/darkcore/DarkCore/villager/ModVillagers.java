@@ -1,7 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.villager;
 
 import com.google.common.collect.ImmutableSet;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.block.ModBlocks;
 import net.minecraft.sounds.*;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -13,9 +13,9 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ModVillagers {
     public static final DeferredRegister<PoiType> POI_TYPES =
-            DeferredRegister.create(ForgeRegistries.POI_TYPES, Main.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.POI_TYPES, MainForge.MOD_ID);
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS =
-            DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, Main.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, MainForge.MOD_ID);
 
     public static final RegistryObject<PoiType> JUMPY_BLOCK_POI = POI_TYPES.register("jumpy_block_poi",
             () -> new PoiType(ImmutableSet.copyOf(ModBlocks.JUMPY_BLOCK.get().getStateDefinition().getPossibleStates()),

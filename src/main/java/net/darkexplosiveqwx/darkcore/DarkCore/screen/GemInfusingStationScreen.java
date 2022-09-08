@@ -2,7 +2,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.renderer.EnergyInfoArea;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.renderer.FluidTankRenderer;
 import net.darkexplosiveqwx.darkcore.DarkCore.util.MouseUtil;
@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author kaupenjoe
  */
 public class GemInfusingStationScreen extends AbstractContainerScreen<GemInfusingStationMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Main.MOD_ID,"textures/gui/gem_infusing_station_gui.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(MainForge.MOD_ID,"textures/gui/gem_infusing_station_gui.png");
     private EnergyInfoArea energyInfoArea;
     private FluidTankRenderer renderer;
 

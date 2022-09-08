@@ -1,7 +1,7 @@
 package net.darkexplosiveqwx.darkcore.DarkCore.recipe;
 
 import com.google.gson.*;
-import net.darkexplosiveqwx.darkcore.DarkCore.Main;
+import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
 import net.darkexplosiveqwx.darkcore.DarkCore.util.FluidJSONUtil;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
@@ -88,7 +88,7 @@ public class GemInfusingStationRecipe implements Recipe<SimpleContainer> {
     public static class Serializer implements RecipeSerializer<GemInfusingStationRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
-                new ResourceLocation(Main.MOD_ID, "gem_infusing");
+                new ResourceLocation(MainForge.MOD_ID, "gem_infusing");
 
         @Override
         public @NotNull GemInfusingStationRecipe fromJson(@NotNull ResourceLocation pRecipeId, @NotNull JsonObject pSerializedRecipe) {

@@ -8,9 +8,9 @@ import net.minecraft.resources.*;
 import net.minecraftforge.client.gui.overlay.*;
 
 public class ThirstHudOverlay {
-    private static final ResourceLocation FILLED_THIRST = new ResourceLocation(Main.MOD_ID,
+    private static final ResourceLocation FILLED_THIRST = new ResourceLocation(MainForge.MOD_ID,
             "textures/thirst/filled_thirst.png");
-    private static final ResourceLocation EMPTY_THIRST = new ResourceLocation(Main.MOD_ID,
+    private static final ResourceLocation EMPTY_THIRST = new ResourceLocation(MainForge.MOD_ID,
             "textures/thirst/empty_thirst.png");
 
     public static final IGuiOverlay HUD_THIRST = ((gui, poseStack, partialTick, width, height) -> {

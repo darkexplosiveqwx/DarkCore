@@ -65,5 +65,20 @@
   "fluid_type.darkcore.soap_water_fluid": "Soap Water",
 
   "darkcore.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "darkcore.tooltip.liquid.amount": "%s mB"
+  "darkcore.tooltip.liquid.amount": "%s mB",
+
+
+  "enchantment.darkcore.lightning_striker": "Lightning Striker",
+  "enchantment.darkcore.wither_main": "Wither",
+  "enchantment.darkcore.wither_off" : "Wither",
+  "enchantment.darkcore.wither_head": "Wither",
+  "enchantment.darkcore.wither_chest" : "Wither",
+  "enchantment.darkcore.wither_legs": "Wither",
+  "enchantment.darkcore.wither_feet": "Wither",
+
+  "effect.darkcore.aura": "Aura",
+  "effect.darkcore.freeze": "Freeze"
+
+
+
 }

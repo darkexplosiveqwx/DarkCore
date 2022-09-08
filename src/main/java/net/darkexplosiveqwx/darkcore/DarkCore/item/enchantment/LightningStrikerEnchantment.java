@@ -1,4 +1,4 @@
-package net.darkexplosiveqwx.darkcore.DarkCore.enchantment;
+package net.darkexplosiveqwx.darkcore.DarkCore.item.enchantment;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

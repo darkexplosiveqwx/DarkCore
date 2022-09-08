@@ -8,7 +8,6 @@ import net.darkexplosiveqwx.darkcore.DarkCore.networking.ModMessages;
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.ThirstDataSyncS2CPacket;
 import net.darkexplosiveqwx.darkcore.DarkCore.thirst.*;
 import net.darkexplosiveqwx.darkcore.DarkCore.villager.*;
-import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.*;
@@ -27,7 +26,7 @@ import net.minecraftforge.fml.common.*;
 
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid = Main.MOD_ID)
+@Mod.EventBusSubscriber(modid = MainForge.MOD_ID)
 public class ModEvents {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
@@ -94,7 +93,7 @@ public class ModEvents {
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player) {
             if(!event.getObject().getCapability(PlayerThirstProvider.PLAYER_THIRST).isPresent()) {
-                event.addCapability(new ResourceLocation(Main.MOD_ID, "properties"), new PlayerThirstProvider());
+                event.addCapability(new ResourceLocation(MainForge.MOD_ID, "properties"), new PlayerThirstProvider());
             }
         }
     }

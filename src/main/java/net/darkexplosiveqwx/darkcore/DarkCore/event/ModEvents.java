@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.*;
 
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid = MainForge.MOD_ID)
+@Mod.EventBusSubscriber(modid = DarkCore.MOD_ID)
 public class ModEvents {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
@@ -93,7 +93,7 @@ public class ModEvents {
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player) {
             if(!event.getObject().getCapability(PlayerThirstProvider.PLAYER_THIRST).isPresent()) {
-                event.addCapability(new ResourceLocation(MainForge.MOD_ID, "properties"), new PlayerThirstProvider());
+                event.addCapability(new ResourceLocation(DarkCore.MOD_ID, "properties"), new PlayerThirstProvider());
             }
         }
     }

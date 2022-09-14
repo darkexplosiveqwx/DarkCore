@@ -27,12 +27,12 @@ import org.slf4j.*;
 /**
  * @author darkexplosivqwx
  */
-@Mod(MainForge.MOD_ID)
-public class MainForge {
+@Mod(DarkCore.MOD_ID)
+public class DarkCore {
     public static final String MOD_ID = "darkcore";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public MainForge() {
+    public DarkCore() {
         LOGGER.debug("Mod DarkCore started!");
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

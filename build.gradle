@@ -32,7 +32,9 @@ plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     id "dev.architectury.loom" version "0.11.0-SNAPSHOT" apply false
     id "com.github.johnrengelman.shadow" version "7.1.2"
-
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.25.0'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -169,6 +171,16 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
 
     mavenLocal()
     mavenCentral()
@@ -326,8 +338,8 @@ dependencies {
     //will work
 
 
-    implementation(fg.deobf("com.blakebr0.cucumber:Cucumber:${mc_old_version}-${cl_version}"))
-    implementation(fg.deobf("com.blakebr0.mysticalagriculture:MysticalAgriculture:${mc_old_version}-${mac_version}"))
+    implementation(fg.deobf("com.blakebr0.cucumber:Cucumber:${mc_version}-${cl_version}"))
+    implementation(fg.deobf("com.blakebr0.mysticalagriculture:MysticalAgriculture:${mc_version}-${mac_version}"))
     implementation(fg.deobf("com.blakebr0.mysticalagradditions:MysticalAgradditions:${mc_old_version}-${myst_agraradditions_version}"))
     implementation(fg.deobf("com.blakebr0.mysticalcustomization:MysticalCustomization:${mc_old_version}-${myst_custom_version}"))
     implementation(fg.deobf("com.blakebr0.pickletweaks:PickleTweaks:${mc_old_version}-${pickle_tweaks_version}"))
@@ -378,6 +390,9 @@ dependencies {
 
     //compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:5.0.38")
     //testCompileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:5.0.38")
+
+
+    compileOnly "curse.maven:inventorio-497122:3963529" //Forge
 
 
     //compileOnly fg.deobf("squeek.appleskin:appleskin-forge:${apple_skin_version}:api")
@@ -447,6 +462,32 @@ dependencies {
 	implementation 'org.jsoup:jsoup:1.15.3'
 	implementation "net.sf.jopt-simple:jopt-simple:6.0-alpha-3"
 
+
+
+    //spigot
+
+    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+
+    //java
+
+    implementation('org.controlsfx:controlsfx:11.1.1')
+    implementation('com.dlsc.formsfx:formsfx-core:11.5.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('net.synedra:validatorfx:0.3.1') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
+    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+    implementation('eu.hansolo:tilesfx:17.1.9') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('com.github.almasb:fxgl:17.1') {
+        exclude(group: 'org.openjfx')
+    }
+
+    //testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    //testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
 
     // Real mod deobf dependency examples - these get remapped to your current mappings

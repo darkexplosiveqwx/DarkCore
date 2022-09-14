@@ -14,7 +14,7 @@ import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.*;
 
 public class ClientEvents {
-    @Mod.EventBusSubscriber(modid = MainForge.MOD_ID, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = DarkCore.MOD_ID, value = Dist.CLIENT)
     public static class ClientForgeEvents{
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event){
@@ -25,7 +25,7 @@ public class ClientEvents {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = MainForge.MOD_ID, value = Dist.CLIENT,bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = DarkCore.MOD_ID, value = Dist.CLIENT,bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModBusEvents{
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event){

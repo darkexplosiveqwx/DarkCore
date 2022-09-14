@@ -23,7 +23,7 @@ public class ModMessages {
 
     public static void register(){
     SimpleChannel net = NetworkRegistry.ChannelBuilder
-            .named(new ResourceLocation(MainForge.MOD_ID,"messages"))
+            .named(new ResourceLocation(DarkCore.MOD_ID,"messages"))
             .networkProtocolVersion(()->"1.0")
             .clientAcceptedVersions(s -> true)
             .serverAcceptedVersions(s -> true)

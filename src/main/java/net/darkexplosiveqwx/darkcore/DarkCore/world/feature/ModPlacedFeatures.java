@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ModPlacedFeatures {
 
-    public final static DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, MainForge.MOD_ID);
+    public final static DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DarkCore.MOD_ID);
 
 
     public static final RegistryObject<PlacedFeature> DARK_ORE_PLACED = PLACED_FEATURES.register("dark_ore_placed",

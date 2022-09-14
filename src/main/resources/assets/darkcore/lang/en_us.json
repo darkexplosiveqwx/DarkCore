@@ -69,12 +69,7 @@
 
 
   "enchantment.darkcore.lightning_striker": "Lightning Striker",
-  "enchantment.darkcore.wither_main": "Wither",
-  "enchantment.darkcore.wither_off" : "Wither",
-  "enchantment.darkcore.wither_head": "Wither",
-  "enchantment.darkcore.wither_chest" : "Wither",
-  "enchantment.darkcore.wither_legs": "Wither",
-  "enchantment.darkcore.wither_feet": "Wither",
+  "enchantment.darkcore.wither": "Wither",
 
   "effect.darkcore.aura": "Aura",
   "effect.darkcore.freeze": "Freeze"

@@ -2,7 +2,7 @@ package net.darkexplosiveqwx.darkcore.DarkCore.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.darkexplosiveqwx.darkcore.DarkCore.MainForge;
+import net.darkexplosiveqwx.darkcore.DarkCore.DarkCore;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.renderer.EnergyInfoArea;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.renderer.FluidTankRenderer;
 import net.darkexplosiveqwx.darkcore.DarkCore.util.MouseUtil;
@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author kaupenjoe
  */
 public class DarkCraftingTableScreen extends AbstractContainerScreen<DarkCraftingTableMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(MainForge.MOD_ID,"textures/gui/dark_crafting_table_gui.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DarkCore.MOD_ID,"textures/gui/dark_crafting_table_gui.png");
     private EnergyInfoArea energyInfoArea;
     private FluidTankRenderer renderer;
 

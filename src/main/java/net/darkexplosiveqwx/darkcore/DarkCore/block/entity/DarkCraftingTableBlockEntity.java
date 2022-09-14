@@ -8,7 +8,6 @@ import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.EnergySyncS2CPac
 import net.darkexplosiveqwx.darkcore.DarkCore.networking.packet.FluidSyncS2CPacket;
 import net.darkexplosiveqwx.darkcore.DarkCore.recipe.DarkCraftingTableRecipe;
 import net.darkexplosiveqwx.darkcore.DarkCore.screen.DarkCraftingTableMenu;
-import net.darkexplosiveqwx.darkcore.DarkCore.screen.GemInfusingStationMenu;
 import net.darkexplosiveqwx.darkcore.DarkCore.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

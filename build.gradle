@@ -6,7 +6,10 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'\
+        //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0"
+        // OPTIONAL Kotlin Serialization plugin
+        //classpath 'org.jetbrains.kotlin:kotlin-serialization:1.7.0'
     }
 }
 
@@ -35,9 +38,18 @@ plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.25.0'
+    id "org.jetbrains.kotlin.jvm" version "1.6.0"
+
 }
 
 apply plugin: 'org.spongepowered.mixin'
+//apply plugin: 'kotlin'
+// OPTIONAL Kotlin Serialization plugin
+//apply plugin: 'kotlinx-serialization'
+
+// Adds KFF as dependency and Kotlin libs to the runtime classpath
+// **If you already know how to add the Kotlin plugin to Gradle, this is the only line you need for KFF
+//apply from: 'https://raw.githubusercontent.com/thedarkcolour/KotlinForForge/site/thedarkcolour/kotlinforforge/gradle/kff-3.6.0.gradle'
 
 group = 'net.darkexplosiveqwx.darkcore.DarkCore'
 version = '0.0.1'
@@ -391,8 +403,17 @@ dependencies {
     //compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:5.0.38")
     //testCompileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:5.0.38")
 
+    //api fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:9.1.537")
+    //api fg.deobf("me.shedaniel.cloth:cloth-config-forge:8.2.88")
+    api(fg.deobf("dev.architectury:architectury-forge:5.12.45"))
+    runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:9.1.537")
+    runtimeOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:8.2.88")
+    runtimeOnly(fg.deobf("dev.architectury:architectury-forge:6.2.46"))
+
+
 
     compileOnly "curse.maven:inventorio-497122:3963529" //Forge
+    //runtimeOnly "curse.maven:inventorio-497122:3963529" //Forge
 
 
     //compileOnly fg.deobf("squeek.appleskin:appleskin-forge:${apple_skin_version}:api")
@@ -479,7 +500,7 @@ dependencies {
     }
     implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-    implementation('eu.hansolo:tilesfx:17.1.9') {
+    implementation('eu.hansolo:tilesfx:17.1.15') {
         exclude(group: 'org.openjfx')
     }
     implementation('com.github.almasb:fxgl:17.1') {

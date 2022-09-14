@@ -45,7 +45,7 @@ public class DiceItem extends Item {
     }
 
     private void outputRandomNumber(Player player){
-        player.sendSystemMessage(Component.literal("["+ player.getName().toString() + "]" +"Your Number is " + getRandomNumber()));
+        player.sendSystemMessage(Component.literal("["+ player.getName() + "]" +"Your Number is " + getRandomNumber()));
     }
 
     private int getRandomNumber(){
